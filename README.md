@@ -52,3 +52,9 @@ Tai11s will build and optimise your code ready for deployment
 
 - Pack and optimise javascript
 - Build tailwind CSS from config, compile your Sass and run PurgeCSS to remove unusued classes based on the output `dist` folder
+
+## BONUS: Travis Github Pages deployment script
+
+`.travis.yml` can be modified to suit your own needs. This simple script will build from a named branch and deploy to Github Pages via your [Travis CI](https://travis-ci.org/) account. 
+
+Store your Github Token securely in the Travis control panel
