@@ -20,4 +20,4 @@ deploy:
   # will be pushed to the master branch by travis
   local_dir: dist
   on:
-    branch: dev # branch name of the source code
+    branch: master # branch name of the source code
