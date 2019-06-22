@@ -1,7 +1,7 @@
 {
-  "name": "deventy",
+  "name": "tai11s",
   "version": "1.0.0",
-  "description": "A minimal 11ty starter with modern tools",
+  "description": "An 11ty starter with TailwindCSS, PostCSS, PurgeCSS and other modern tools",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
