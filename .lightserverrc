@@ -1,7 +1,7 @@
 {
- "port": 4000,
+ "port": 8080,
  "serve": "dist",
- "bind": "localhost",
+ "bind": "0.0.0.0",
  "delay": 100,
  "quiet": true,
  "watchexps": [
