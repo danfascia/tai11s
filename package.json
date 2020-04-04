@@ -45,7 +45,7 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
-    "acorn": "^6.1.1",
+    "acorn": "^6.4.1",
     "node-sass": "^4.12.0"
   }
 }
