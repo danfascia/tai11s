@@ -12,7 +12,7 @@ const plugins = [
 if (process.env.NODE_ENV === 'production') {
   plugins.push(
     purgecss({
-      content: ['./dist/**/*.html'],
+      content: ['./dist/**/*.html', './dist/**/**/*.html'],
       extractors: [
         {
           extractor: class TailwindExtractor {
