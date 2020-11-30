@@ -1,5 +1,5 @@
 {
- "port": 8080,
+ "port": 4000,
  "serve": "dist",
  "bind": "0.0.0.0",
  "delay": 100,

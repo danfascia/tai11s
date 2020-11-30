@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: Ad-free Meals
+description: An Eleventy starter with modern tooling, Tailwind CSS and PurgeCSS
+---
+
+<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:rounded-lg shadow-2xl flex items-end">
+	    
+    <section class="px-4">
+			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
+			<p class=" leading-normal">
+					This is the best place to find recipes without ads. Compatible with recipes from:
+			</p>
+			<ul class="list my-8 px-8">
+				{% for recipe in recipes %}
+				<li><a href="/recipes/{{recipe.name|slug}}/">{{recipe.name}}</a></li>
+				{% endfor %}
+			</ul>
+    </section> 
+
+</div>

@@ -20,3 +20,8 @@ a:hover { @apply text-blue-800 border-blue-600 }
 
 h1,h2 { @apply font-black }
 h3 { @apply font-bold }
+
+.recipe-meta {
+  @apply text-sm;
+  @apply font-bold;
+}

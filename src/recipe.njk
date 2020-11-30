@@ -1,0 +1,80 @@
+---
+layout: layouts/base.njk
+description: test desc
+pagination:
+    data: recipes
+    size: 1
+    alias: recipe
+permalink: "recipes/{{ recipe.name | slug }}/"
+---
+<div class="max-w-4xl bg-white mx-auto text-xl py-8 my-16 md:rounded-lg shadow-2xl">
+    <section class="px-4">
+        <ul class="flex text-xs uppercase">
+            <li><a href="/">Home</a></li>
+            <li>&nbsp;>&nbsp;</li>
+            <li><a href="/recipes/">Recipes</a></li>
+            <li>&nbsp;>&nbsp;</li>
+        </ul>
+        <h1 class="text-4xl">{{ recipe.name }}</h1>
+        {# <img class="w-full" src="{{ recipe.image }}"/> #}
+        {% if recipe.servings | length %}
+            <h4 class="recipe-meta">Serves:
+                {{ recipe.servings }}</h4>
+        {% endif %}
+        <div class="bg-gray-200 p-4 border-2 border-gray-300 my-4 inline-block">
+
+        {% if recipe.time.prep | length %}
+            <h4 class="recipe-meta">Prep Time:
+                {{ recipe.time.prep }}</h4>
+        {% endif %}
+
+        {% if recipe.time.cook | length %}
+            <h4 class="recipe-meta">Cook Time:
+                {{ recipe.time.cook }}</h4>
+        {% endif %}
+
+        {% if recipe.time.active | length %}
+            <h4 class="recipe-meta">Active Time:
+                {{ recipe.time.active }}</h4>
+        {% endif %}
+
+        {% if recipe.time.inactive | length %}
+            <h4 class="recipe-meta">Inactive Time:
+                {{ recipe.time.inactive }}</h4>
+        {% endif %}
+
+        {% if recipe.time.ready | length %}
+            <h4 class="recipe-meta">Ready Time:
+                {{ recipe.time.ready }}</h4>
+        {% endif %}
+
+        {% if recipe.time.total | length %}
+            <h4 class="recipe-meta">Total Time:
+                {{ recipe.time.total }}</h4>
+        {% endif %}
+        </div>
+        <div class="my-4">
+            <h2 class="text-2xl">Ingredients</h2>
+            <ul class="text-base pl-4 list-disc">
+                {% for i in recipe.ingredients %}
+                    <li>{{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2 class="text-2xl">Instructions</h2>
+        <ol class="text-lg pl-4 list-decimal">
+            {% for i in recipe.instructions %}
+                <li class="my-3">{{ i }}</li>
+            {% endfor %}
+        </ol>
+        {% if recipe.tags | length > 0 %}
+        <h2 class="text-2xl">Tags</h2>
+        <div class="my-4">
+        {% for t in recipe.tags %}
+            <a class="rounded-full border-2 border-purple-500 text-purple-500 px-4 py-2 text-sm" href="/tags/{{ t | slug }}/">{{ t }}</a>
+        {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+</div>
