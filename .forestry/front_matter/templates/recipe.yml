@@ -4,41 +4,58 @@ hide_body: true
 fields:
 - type: text
   name: name
-  label: name
+  label: Name
+  description: Paste in the name of the recipe
 - type: list
   name: ingredients
-  label: ingredients
+  label: Ingredients
+  description: Add the ingredients one at a time
 - type: list
   name: instructions
-  label: instructions
+  label: Instructions
+  description: Add the instructions one line at a time
 - type: list
   name: tags
-  label: tags
+  label: Tags
+  description: Tags are made to group recipes by type or ingredient
+  config:
+    use_select: false
 - type: text
   name: servings
-  label: servings
+  label: Servings
+  description: How many people does it serve or how large is the yield in cups, feet,
+    meters, stones, etc.
 - type: text
   name: image
-  label: image
+  label: Image
+  description: Optionally, upload an image representing your recipe.
 - type: field_group
   name: time
-  label: time
+  label: Times
   fields:
   - type: text
     name: prep
-    label: prep
+    label: Prep
+    description: How long to prepare the recipe?
   - type: text
     name: cook
-    label: cook
+    label: Cook
+    description: How long is spent cooking the recipe?
   - type: text
     name: active
-    label: active
+    label: Active
+    description: How much time is spent actively working on the recipe?
   - type: text
     name: inactive
-    label: inactive
+    label: Inactive
+    description: How much time is spent inactive? e.g. letting the dough rise, chill,
+      etc.
   - type: text
     name: ready
-    label: ready
+    label: Ready
+    description: 'How long until it''s ready? '
   - type: text
     name: total
-    label: total
+    label: Total
+    description: 'What is the total time spent? '
+  description: Add any of the available times below
