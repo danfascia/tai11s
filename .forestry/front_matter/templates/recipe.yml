@@ -25,10 +25,6 @@ fields:
   label: Servings
   description: How many people does it serve or how large is the yield in cups, feet,
     meters, stones, etc.
-- type: text
-  name: image2
-  label: Image
-  description: Optionally, upload an image representing your recipe.
 - name: image
   type: file
   config:
