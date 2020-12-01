@@ -9,7 +9,7 @@ sections:
   label: Recipes JSON
   create: all
   match: "**/*"
-  new_doc_ext: ".json"
+  new_doc_ext: json
   templates:
   - recipe-json
 - type: directory
