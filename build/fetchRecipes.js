@@ -26,6 +26,7 @@ async function init() {
     let recipe;
     try {
       recipe = await recipeScraper(url);
+      recipe.url = url;
     } catch (e) {
       console.log(`error scraping recipe for ${url}`, e);
       errors.push(url);
