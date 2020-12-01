@@ -41,14 +41,14 @@ sources:
 - "https://www.yummly.com/"
 ---
 
-<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:rounded-lg shadow-2xl flex items-end">
+<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:my-2 sm:my-0 md:rounded-lg shadow-2xl flex items-end">
 	    
     <section class="px-4">
 			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
-			<p class=" leading-normal">
+			<a href="/recipes/" class="inline-block p-4 my-4 text-xl bg-purple-200 cursor-pointer rounded">See the Recipes</a>
+			<p class="leading-normal">
 					This is the best place to find recipes without ads. Compatible with recipes from:
 			</p>
-			<a href="/recipes/" class="inline-block p-4 my-4 text-xl bg-purple-200 cursor-pointer rounded">See the Recipes</a>
 			<ul class="list my-8 px-8">
 				{% for source in sources %}
 				<li><a href="{{source}}">{{source|replace('www.','')|replace('https://','')|replace('http://','')|replace('/','')}}</a></li>
