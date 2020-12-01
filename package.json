@@ -4,7 +4,7 @@
   "description": "An 11ty starter with TailwindCSS, PostCSS, PurgeCSS and other modern tools",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "data": "node build/fetchRecipes.js",
     "clean": "rm -rf dist",
     "eleventy:default": "eleventy",
     "eleventy:watch": "eleventy --watch",
@@ -15,7 +15,7 @@
     "serve": "light-server -c .lightserverrc",
     "dev": "cross-env NODE_ENV=development npm-run-all clean styles:dev scripts:dev eleventy:default --parallel eleventy:watch serve --print-label",
     "dev:debug": "DEBUG=* npm run dev",
-    "build": "cross-env NODE_ENV=production run-s clean scripts:prod eleventy:default styles:prod --print-label"
+    "build": "cross-env NODE_ENV=production run-s data clean scripts:prod eleventy:default styles:prod --print-label"
   },
   "repository": {
     "type": "git",

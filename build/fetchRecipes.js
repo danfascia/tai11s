@@ -18,6 +18,7 @@ const errors = [];
 
 async function init() {
   const cached = getCachedFilenames();
+  console.log('cached',JSON.stringify(cached));
   const urls = JSON.parse(fs.readFileSync(inputFilepath, { encoding: "utf8" }));
   // loop through the URLs and fetch the content
   for (let i = 0; i < urls.length; i++) {
@@ -35,7 +36,9 @@ async function init() {
         .replace(/ /g, "-")
         .replace(/[^\w-]+/g, "");
       slug += '.json';
-      if (!cached.includes(slug)) {
+      console.log('slug',slug);
+      if (!cached.includes(`${cachedFilepath}/${slug}`)) {
+        console.log('adding');
         storeData(recipe, `${cachedFilepath}/${slug}`);
         recipes.push(recipe);
       }
