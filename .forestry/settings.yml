@@ -4,6 +4,9 @@ auto_deploy: false
 admin_path: 
 webhook_url: 
 sections:
+- type: document
+  path: build/urls.json
+  label: URL List
 - type: directory
   path: src/_data/user-uploaded
   label: Recipes
