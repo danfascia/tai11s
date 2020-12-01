@@ -1,4 +1,18 @@
 ---
 label: Recipe JSON
 hide_body: true
-fields: []
+fields:
+- name: name
+  type: text
+  config:
+    required: false
+  label: Name
+  description: Paste in the name of the recipe
+- name: ingredients
+  type: list
+  config:
+    use_select: false
+    min: 
+    max: 
+  label: Ingredients
+  description: Add the ingredients one step at a time.
