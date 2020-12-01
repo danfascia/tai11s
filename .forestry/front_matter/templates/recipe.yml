@@ -29,6 +29,12 @@ fields:
   name: image2
   label: Image
   description: Optionally, upload an image representing your recipe.
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: Image
+  description: Optionally, upload an image representing your recipe.
 - type: field_group
   name: time
   label: Times
