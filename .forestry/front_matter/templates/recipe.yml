@@ -24,3 +24,5 @@ fields:
 - type: list
   name: instructions
   label: instructions
+pages:
+- build/recipes/baked-oatmeal.md
