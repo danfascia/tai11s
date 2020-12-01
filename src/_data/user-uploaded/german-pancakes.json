@@ -1,16 +1,26 @@
 {
-  "name": "",
-  "ingredients": [],
-  "instructions": [],
-  "tags": [],
-  "servings": "",
+  "name": "German Pancakes",
+  "ingredients": [
+    "Pancakes",
+    "Germans"
+  ],
+  "instructions": [
+    "Now you have a pancake",
+    "Pour on some syrup",
+    "Smoosh together the germans and the pancakes"
+  ],
+  "tags": [
+    "german",
+    "breakfast"
+  ],
+  "servings": "17 people",
   "image": "",
   "time": {
-    "prep": "",
-    "cook": "",
+    "prep": "15 minutes",
+    "cook": "22 minutes",
     "active": "",
     "inactive": "",
     "ready": "",
-    "total": ""
+    "total": "37 minutes"
   }
 }
