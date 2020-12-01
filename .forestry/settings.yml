@@ -5,9 +5,8 @@ admin_path:
 webhook_url: 
 sections:
 - type: document
-  path: build/urls.txt
+  path: build/urls.json
   label: URL List
-  match: "**/*"
 - type: directory
   path: src/_data/user-uploaded
   label: Recipes
