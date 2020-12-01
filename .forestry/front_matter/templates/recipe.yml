@@ -61,3 +61,9 @@ fields:
     label: Total
     description: 'What is the total time spent? '
   description: Add any of the available times below
+- name: url
+  type: text
+  config:
+    required: false
+  label: Original Recipe URL
+  description: Paste in the source of the URL if it exists
