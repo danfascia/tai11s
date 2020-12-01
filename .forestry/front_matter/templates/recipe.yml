@@ -1,0 +1,44 @@
+---
+label: Recipe
+hide_body: true
+fields:
+- type: text
+  name: name
+  label: name
+- type: list
+  name: ingredients
+  label: ingredients
+- type: list
+  name: instructions
+  label: instructions
+- type: list
+  name: tags
+  label: tags
+- type: text
+  name: servings
+  label: servings
+- type: text
+  name: image
+  label: image
+- type: field_group
+  name: time
+  label: time
+  fields:
+  - type: text
+    name: prep
+    label: prep
+  - type: text
+    name: cook
+    label: cook
+  - type: text
+    name: active
+    label: active
+  - type: text
+    name: inactive
+    label: inactive
+  - type: text
+    name: ready
+    label: ready
+  - type: text
+    name: total
+    label: total
