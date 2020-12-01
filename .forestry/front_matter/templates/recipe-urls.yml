@@ -1,4 +1,11 @@
 ---
 label: Recipe URLs
 hide_body: true
-fields: []
+fields:
+- name: urls
+  type: list
+  config:
+    use_select: false
+    min: 
+    max: 
+  label: URLs
