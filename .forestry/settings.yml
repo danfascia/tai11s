@@ -5,6 +5,14 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
+  path: src/_data
+  label: Recipes JSON
+  create: all
+  match: "**/*"
+  new_doc_ext: ".json"
+  templates:
+  - recipe-json
+- type: directory
   path: build/recipes
   label: Recipes
   create: all
