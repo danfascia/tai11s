@@ -16,5 +16,3 @@ fields:
     max: 
   label: Ingredients
   description: Add the ingredients one step at a time.
-pages:
-- src/_data/german-pancakes.json
