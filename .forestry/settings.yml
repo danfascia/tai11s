@@ -8,13 +8,13 @@ sections:
   path: build/urls.json
   label: URL List
 - type: directory
-  path: src/_data/user-uploaded
+  path: src/_data/recipes
   label: Recipes
   create: all
   match: "**/*"
   new_doc_ext: json
   templates:
-  - recipe-json
+  - recipe
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
