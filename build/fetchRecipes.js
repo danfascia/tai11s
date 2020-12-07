@@ -20,9 +20,10 @@ async function init() {
   const cached = getCachedFilenames();
   console.log('cached',JSON.stringify(cached));
   const urls = JSON.parse(fs.readFileSync(inputFilepath, { encoding: "utf8" }));
+  const uniqueUrls = [...new Set(urls)]
   // loop through the URLs and fetch the content
-  for (let i = 0; i < urls.length; i++) {
-    const url = urls[i];
+  for (let i = 0; i < uniqueUrls.length; i++) {
+    const url = uniqueUrls[i];
     let recipe;
     try {
       recipe = await recipeScraper(url);

@@ -76,5 +76,10 @@ permalink: "recipes/{{ recipe.name | slug }}/"
         {% endfor %}
         </div>
         {% endif %}
+        {% if recipe.url | length > 0 %}
+        <div class="my-4">
+            <a class="p-2 bg-purple-600 text-xs uppercase text-white rounded hover:text-white" href="{{recipe.url}}">See Original Recipe</a>
+        </div>
+        {% endif %}
     </section>
 </div>

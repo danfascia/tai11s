@@ -17,6 +17,7 @@ const domains = {
   eatingwell: require("./eatingwell"),
   epicurious: require("./epicurious"),
   food: require("./food"),
+  fallback: require("./fallback"),
   foodandwine: require("./foodandwine"),
   foodnetwork: require("./foodnetwork"),
   gimmedelicious: require("./gimmedelicious"),
@@ -53,7 +54,7 @@ const recipeScraper = url => {
       if (domains[domain] !== undefined) {
         resolve(domains[domain](url));
       } else {
-        reject(new Error("Site not yet supported"));
+        resolve(domains['fallback'](url));
       }
     } else {
       reject(new Error("Failed to parse domain"));
