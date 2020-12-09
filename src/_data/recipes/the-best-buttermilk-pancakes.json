@@ -1,1 +1,31 @@
-{"name":"The Best Buttermilk Pancakes","ingredients":["\n\t\t\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tcups\n\t\t\t\t\t\t\t\t\t\tall-purpose flour\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tteaspoons\n\t\t\t\t\t\t\t\t\t\tbaking powder\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t1\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tteaspoon\n\t\t\t\t\t\t\t\t\t\tbaking soda\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t1/2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tteaspoon\n\t\t\t\t\t\t\t\t\t\tsalt\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t3\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttablespoons\n\t\t\t\t\t\t\t\t\t\tsugar\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlarge eggs\n\t\t\t\t\t\t\t\t\t\tlightly beaten\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t3\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tcups\n\t\t\t\t\t\t\t\t\t\tbuttermilk\n\t\t\t\t\t\t\t\t\t","\n\t\t\t\t\t\t\t\t\t\t4\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttablespoons\n\t\t\t\t\t\t\t\t\t\tunsalted butter\n\t\t\t\t\t\t\t\t\t\tmelted\n\t\t\t\t\t\t\t\t\t"],"instructions":["Preheat the griddle to 375 degrees. In a large mixing bowl, whisk flour, baking powder, baking soda, salt and sugar together. Add the eggs, buttermilk and melted butter. Mix until incorporated but leave small lumps in the batter.","Spray the griddle with non stick cooking spray. Add about 1/2 cup of the batter to the hot griddle. Once the edges start to harden and small bubbles form, about 2 minutes, flip to the other side. Cook until golden at the bottom.","Repeat with the remaining batter. Serve with syrup or fresh fruit. Makes about 9 pancakes."],"tags":[],"time":{"prep":"10 minutes","cook":"","active":"","inactive":"","ready":"","total":"10 minutes"},"servings":"99","image":"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20250%20250'%3E%3C/svg%3E"}
+{
+  "name": "Buttermilk Pancakes",
+  "ingredients": [
+    "\n\t\t\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tcups\n\t\t\t\t\t\t\t\t\t\tall-purpose flour\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tteaspoons\n\t\t\t\t\t\t\t\t\t\tbaking powder\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t1\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tteaspoon\n\t\t\t\t\t\t\t\t\t\tbaking soda\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t1/2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tteaspoon\n\t\t\t\t\t\t\t\t\t\tsalt\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t3\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttablespoons\n\t\t\t\t\t\t\t\t\t\tsugar\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlarge eggs\n\t\t\t\t\t\t\t\t\t\tlightly beaten\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t3\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tcups\n\t\t\t\t\t\t\t\t\t\tbuttermilk\n\t\t\t\t\t\t\t\t\t",
+    "\n\t\t\t\t\t\t\t\t\t\t4\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttablespoons\n\t\t\t\t\t\t\t\t\t\tunsalted butter\n\t\t\t\t\t\t\t\t\t\tmelted\n\t\t\t\t\t\t\t\t\t"
+  ],
+  "instructions": [
+    "Preheat the griddle to 375 degrees. In a large mixing bowl, whisk flour, baking powder, baking soda, salt and sugar together. Add the eggs, buttermilk and melted butter. Mix until incorporated but leave small lumps in the batter.",
+    "Spray the griddle with non stick cooking spray. Add about 1/2 cup of the batter to the hot griddle. Once the edges start to harden and small bubbles form, about 2 minutes, flip to the other side. Cook until golden at the bottom.",
+    "Repeat with the remaining batter. Serve with syrup or fresh fruit. Makes about 9 pancakes."
+  ],
+  "tags": [
+
+  ],
+  "time": {
+    "prep": "10 minutes",
+    "cook": "",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "10 minutes"
+  },
+  "servings": "99",
+  "image": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20250%20250'%3E%3C/svg%3E"
+}
