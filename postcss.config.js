@@ -4,10 +4,10 @@ const cssnano = require('cssnano')
 const autoprefixer = require('autoprefixer')
 
 const plugins = [
-                  autoprefixer,
-                  tailwindcss('./tailwind.config.js'),
-                  cssnano({ preset: 'default', }),
-                ]
+  autoprefixer,
+  tailwindcss('./tailwind.config.js'),
+  cssnano({ preset: 'default', }),
+]
 
 if (process.env.NODE_ENV === 'production') {
   plugins.push(

@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Errors
+description: Recipes without the annoying ads!
+---
+
+<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:rounded-lg shadow-2xl flex items-end">
+	    
+    <section class="px-4">
+			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
+			<ul class="list my-8 px-8">
+				{% for url in errors %}
+				<li><a href="{{url}}">{{url}}</a></li>
+				{% endfor %}
+			</ul>
+    </section> 
+
+</div>

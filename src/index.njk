@@ -1,59 +1,19 @@
 ---
 layout: layouts/base.njk
 title: Ad-free Meals
-description: An Eleventy starter with modern tooling, Tailwind CSS and PurgeCSS
-sources: 
-- "https://www.101cookbooks.com/"
-- "https://www.allrecipes.com/"
-- "https://www.ambitiouskitchen.com/"
-- "https://www.averiecooks.com/"
-- "https://www.bbc.co.uk/"
-- "https://www.bbcgoodfood.com/"
-- "https://www.bonappetit.com/"
-- "https://www.budgetbytes.com/"
-- "https://www.centraltexasfoodbank.org/"
-- "https://www.closetcooking.com/"
-- "https://cookieandkate.com/"
-- "https://copykat.com/"
-- "https://damndelicious.net/"
-- "http://www.eatingwell.com/"
-- "https://www.epicurious.com/"
-- "https://www.food.com/"
-- "https://www.foodandwine.com/"
-- "https://www.foodnetwork.com/"
-- "http://www.gimmesomeoven.com/"
-- "https://www.kitchenstories.com/"
-- "https://www.minimalistbaker.com/"
-- "https://www.myrecipes.com/"
-- "https://www.nomnompaleo.com/"
-- "https://www.omnivorescookbook.com/"
-- "https://pinchofyum.com/"
-- "https://recipetineats.com/"
-- "https://www.seriouseats.com/"
-- "https://www.simplyrecipes.com/"
-- "https://smittenkitchen.com/"
-- "https://thepioneerwoman.com/"
-- "https://tastesbetterfromscratch.com/"
-- "https://therealfoodrds.com/"
-- "https://www.thespruceeats.com/"
-- "https://whatsgabycooking.com/"
-- "https://www.woolworths.com.au/"
-- "https://www.yummly.com/"
+description: Recipes without the annoying ads! 
 ---
 
-<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:my-2 sm:my-0 md:rounded-lg shadow-2xl flex items-end">
+<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:rounded-lg shadow-2xl flex items-end">
 	    
     <section class="px-4">
 			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
-			<a href="/recipes/" class="inline-block p-4 my-4 text-xl bg-purple-200 cursor-pointer rounded">See the Recipes</a>
-			<p class="leading-normal">
-					This is the best place to find recipes without ads. Compatible with recipes from:
-			</p>
-			<ul class="list my-8 px-8">
-				{% for source in sources %}
-				<li><a href="{{source}}">{{source|replace('www.','')|replace('https://','')|replace('http://','')|replace('/','')}}</a></li>
-				{% endfor %}
-			</ul>
+			<p>Note that some recipes are not compatible. Those are listed here as Errored Recipes. If your recipe appears here please reach out to Matt</a>
+			<div>
+				<a class="inline-block my-2 px-4 py-2 bg-blue-500 text-white hover:text-white border-blue-600 border-2 shadow-lg" href="/errors/">Errored Recipes</a>
+				<a class="inline-block my-2 px-4 py-2 bg-blue-500 text-white hover:text-white border-blue-600 border-2 shadow-lg" href="https://app.forestry.io/sites/z-owheiayh8mag/#/pages/build-urls-json">Add a Recipe</a>
+				</div>
+			{% recipeList recipes, "name" %}
     </section> 
 
 </div>

@@ -7,12 +7,19 @@ pagination:
     alias: recipe
 permalink: "recipes/{{ recipe.name | slug }}/"
 ---
+<script src="https://raw.githubusercontent.com/richtr/NoSleep.js/master/dist/NoSleep.min.js"></script>
+<script>
+    var noSleep = new NoSleep();
+    function enableNoSleep() {
+        noSleep.enable();
+        document.removeEventListener('touchstart', enableNoSleep, false);
+    }
+    document.addEventListener('touchstart', enableNoSleep, false);
+</script>
 <div class="max-w-4xl bg-white mx-auto text-xl py-8 my-16 md:rounded-lg shadow-2xl">
     <section class="px-4">
         <ul class="flex text-xs uppercase">
-            <li><a href="/">Home</a></li>
-            <li>&nbsp;>&nbsp;</li>
-            <li><a href="/recipes/">Recipes</a></li>
+            <li><a href="/">Recipes</a></li>
             <li>&nbsp;>&nbsp;</li>
         </ul>
         <h1 class="text-4xl">{{ recipe.name }}</h1>
@@ -78,7 +85,8 @@ permalink: "recipes/{{ recipe.name | slug }}/"
         {% endif %}
         {% if recipe.url | length > 0 %}
         <div class="my-4">
-            <a class="p-2 bg-purple-600 text-xs uppercase text-white rounded hover:text-white" href="{{recipe.url}}">See Original Recipe</a>
+            <a class="p-2 bg-purple-600 text-xs uppercase text-white rounded hover:text-white" href="{{recipe.url}}" target="_blank">See Original Recipe</a>
+            <a class="p-2 bg-purple-600 text-xs uppercase text-white rounded hover:text-white" href="https://app.forestry.io/sites/z-owheiayh8mag/#/pages/src-_data-recipes-{{recipe.name | slug}}-json/" target="_blank">Edit on Forestry</a>
         </div>
         {% endif %}
     </section>
