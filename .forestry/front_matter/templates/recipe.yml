@@ -67,3 +67,5 @@ fields:
     required: false
   label: Original Recipe URL
   description: Paste in the source of the URL if it exists
+pages:
+- src/_data/recipes/banana-bread.json

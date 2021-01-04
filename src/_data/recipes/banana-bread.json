@@ -1,0 +1,35 @@
+{
+  "name": "Banana Bread (From Kristi)",
+  "ingredients": [
+    "1/2 cup shortening",
+    "1 cup sugar",
+    "3 eggs",
+    "1 1/2 cup mashed ripe banana",
+    "1 1/4 cup flour",
+    "3/4 tsp soda",
+    "1/2 tsp salt"
+  ],
+  "instructions": [
+    "Preheat oven to 350",
+    "Cream shortening and sugar until light. ",
+    "Add eggs and mix well.",
+    "Stir in bananas and sift in dry ingredients",
+    "Mix well",
+    "If making in a pan, pour into greased 9x13 glass pan and bake for 30 minutes",
+    "Alternatively, pour into muffin tins and bake for about 15 minutes or until golden brown"
+  ],
+  "tags": [
+    "dessert"
+  ],
+  "servings": "9x13 pan",
+  "image": "",
+  "time": {
+    "prep": "10 min",
+    "cook": "30 min",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "45 min"
+  },
+  "url": ""
+}
