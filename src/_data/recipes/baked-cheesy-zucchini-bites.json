@@ -1,1 +1,34 @@
-{"name":"Baked Cheesy Zucchini Bites","ingredients":["\n\t\t\t\t\t\t1 1/2 cups (7.5 ounces) packed shredded zucchini (no need to peel zucchini)\t\t\t\t\t","\n\t\t\t\t\t\t1 large egg, lightly beaten\t\t\t\t\t","\n\t\t\t\t\t\t1/4 to 1/2 cup (1 to 2 ounces) shredded sharp cheddar cheese or a blend of cheddar and Monterey jack\t\t\t\t\t","\n\t\t\t\t\t\t1/4 cup (.75 ounce) panko or regular bread crumbs\t\t\t\t\t","\n\t\t\t\t\t\t1/4 teaspoon dried basil (or 1-2 teaspoons fresh)\t\t\t\t\t","\n\t\t\t\t\t\t1/4 teaspoon garlic powder\t\t\t\t\t","\n\t\t\t\t\t\t1/4 teaspoon salt\t\t\t\t\t","\n\t\t\t\t\t\t1/8 teaspoon pepper\t\t\t\t\t"],"instructions":["Preheat the oven to 425 degrees F. Line a rimmed baking sheet with parchment paper and lightly coat with cooking spray or lightly grease an unlined baking sheet.","Place the shredded zucchini in a clean kitchen towel and wring out all the excess water over the sink until the zucchini is really dry. You should have a little over 1 cup after squeezing out the water (if you have a scale, you'll want about 6 ounces of zucchini that's been squeezed dry).","Place the zucchini and remaining ingredients in a medium bowl and mix until combined.","Drop the mixture by tablespoonfuls on the prepared baking sheet and lightly press the mounds with your hands to flatten slightly.","Bake for 16-20 minutes until the edges are golden."],"tags":[],"time":{"prep":"10 minutes","cook":"","active":"","inactive":"","ready":"","total":"30 minutes"},"servings":"1-2 dozen zucchini bites","image":"https://www.melskitchencafe.com/wp-content/uploads/zucchini-fritters1.jpg","url":"https://www.melskitchencafe.com/baked-cheesy-zucchini-bites/"}
+{
+  "name": "Baked Cheesy Zucchini Bites",
+  "ingredients": [
+    "\n\t\t\t\t\t\t1 1/2 cups (7.5 ounces) packed shredded zucchini (no need to peel zucchini)\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1 large egg, lightly beaten\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/4 to 1/2 cup (1 to 2 ounces) shredded sharp cheddar cheese or a blend of cheddar and Monterey jack\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/4 cup (.75 ounce) panko or regular bread crumbs\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/4 teaspoon dried basil (or 1-2 teaspoons fresh)\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/4 teaspoon garlic powder\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/4 teaspoon salt\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/8 teaspoon pepper\t\t\t\t\t"
+  ],
+  "instructions": [
+    "Preheat the oven to 425 degrees F. Line a rimmed baking sheet with parchment paper and lightly coat with cooking spray or lightly grease an unlined baking sheet.",
+    "Place the shredded zucchini in a clean kitchen towel and wring out all the excess water over the sink until the zucchini is really dry. You should have a little over 1 cup after squeezing out the water (if you have a scale, you'll want about 6 ounces of zucchini that's been squeezed dry).",
+    "Place the zucchini and remaining ingredients in a medium bowl and mix until combined.",
+    "Drop the mixture by tablespoonfuls on the prepared baking sheet and lightly press the mounds with your hands to flatten slightly.",
+    "Bake for 16-20 minutes until the edges are golden."
+  ],
+  "tags": [
+    "snacks"
+  ],
+  "time": {
+    "prep": "10 minutes",
+    "cook": "",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "30 minutes"
+  },
+  "servings": "1-2 dozen zucchini bites",
+  "image": "https://www.melskitchencafe.com/wp-content/uploads/zucchini-fritters1.jpg",
+  "url": "https://www.melskitchencafe.com/baked-cheesy-zucchini-bites/"
+}
