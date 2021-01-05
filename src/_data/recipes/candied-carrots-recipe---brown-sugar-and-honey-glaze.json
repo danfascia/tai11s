@@ -1,1 +1,33 @@
-{"name":"Candied Carrots Recipe - brown sugar and honey glaze","ingredients":["3 cups baby carrots","1/4 cup butter","1/4 cup honey","1/4 cup brown sugar","1 tsp cinnamon","1 tsp salt","1/4 tsp cayenne powder"],"instructions":["Boil the baby carrots until tender. Drain.","In a skillet, melt butter on medium heat. Stir in the honey, brown sugar, cinnamon, salt and cayenne pepper.","Bring the glaze to a boil and continue to cook, stirring constantly for a few minutes. The glaze should reduce and thicken a little bit.","Dump in the cooked carrots and stir so they are all well coated in the glaze. ","Reduce heat to a simmer and continue to cook for another 5 minutes, stirring often. ","Serve."],"tags":[],"time":{"prep":"5 minutes","cook":"30 minutes","active":"","inactive":"","ready":"","total":"35 minutes"},"servings":"4"}
+{
+  "name": "Candied Carrots Recipe - brown sugar and honey glaze",
+  "ingredients": [
+    "3 cups baby carrots",
+    "1/4 cup butter",
+    "1/4 cup honey",
+    "1/4 cup brown sugar",
+    "1 tsp cinnamon",
+    "1 tsp salt",
+    "1/4 tsp cayenne powder"
+  ],
+  "instructions": [
+    "Boil the baby carrots until tender. Drain.",
+    "In a skillet, melt butter on medium heat. Stir in the honey, brown sugar, cinnamon, salt and cayenne pepper.",
+    "Bring the glaze to a boil and continue to cook, stirring constantly for a few minutes. The glaze should reduce and thicken a little bit.",
+    "Dump in the cooked carrots and stir so they are all well coated in the glaze. ",
+    "Reduce heat to a simmer and continue to cook for another 5 minutes, stirring often. ",
+    "Serve."
+  ],
+  "tags": [
+    "side",
+    "dinner"
+  ],
+  "time": {
+    "prep": "5 minutes",
+    "cook": "30 minutes",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "35 minutes"
+  },
+  "servings": "4"
+}
