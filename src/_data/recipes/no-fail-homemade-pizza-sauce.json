@@ -1,1 +1,30 @@
-{"name":"No-Fail Homemade Pizza Sauce","ingredients":["\n\t\t\t\t\t\t1 (14 1/2-ounce) can diced tomatoes, undrained\t\t\t\t\t","\n\t\t\t\t\t\t1 (6-ounce) can tomato paste\t\t\t\t\t","\n\t\t\t\t\t\t1 teaspoon sugar\t\t\t\t\t","\n\t\t\t\t\t\t1/2 teaspoon dried oregano\t\t\t\t\t","\n\t\t\t\t\t\t1/4 teaspoon garlic salt\t\t\t\t\t","\n\t\t\t\t\t\t1/2 teaspoon dried basil\t\t\t\t\t","\n\t\t\t\t\t\tPinch of crushed red pepper\t\t\t\t\t"],"instructions":["Combine all ingredients in food processor or blender and blend until desired consistency. I leave mine slightly chunky. You can adjust the seasonings to taste. This recipe is open to interpretation. Use what you like, taste it along the way and it is sure to be delicious!"],"tags":[],"time":{"prep":"5 minutes","cook":"","active":"","inactive":"","ready":"","total":"5 minutes"},"servings":"2-3 cups","image":"https://www.melskitchencafe.com/wp-content/uploads/2008/01/featured-image.jpg"}
+{
+  "name": "No-Fail Homemade Pizza Sauce",
+  "ingredients": [
+    "\n\t\t\t\t\t\t1 (14 1/2-ounce) can diced tomatoes, undrained\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1 (6-ounce) can tomato paste\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1 teaspoon sugar\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/2 teaspoon dried oregano\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/4 teaspoon garlic salt\t\t\t\t\t",
+    "\n\t\t\t\t\t\t1/2 teaspoon dried basil\t\t\t\t\t",
+    "\n\t\t\t\t\t\tPinch of crushed red pepper\t\t\t\t\t"
+  ],
+  "instructions": [
+    "Combine all ingredients in food processor or blender and blend until desired consistency. I leave mine slightly chunky. You can adjust the seasonings to taste. This recipe is open to interpretation. Use what you like, taste it along the way and it is sure to be delicious!"
+  ],
+  "tags": [
+    "main dish",
+    "pizza",
+    "dinner"
+  ],
+  "time": {
+    "prep": "5 minutes",
+    "cook": "",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "5 minutes"
+  },
+  "servings": "2-3 cups",
+  "image": "https://www.melskitchencafe.com/wp-content/uploads/2008/01/featured-image.jpg"
+}
