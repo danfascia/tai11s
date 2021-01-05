@@ -1,1 +1,42 @@
-{"name":"Chicken Bacon Ranch Casserole","ingredients":["4 slices bacon, diced","2 boneless, skinless chicken thighs*, cut into 1-inch chunks","1 tablespoon olive oil","1 tablespoon Ranch Seasoning and Salad Dressing Mix, or more, to taste","8 ounces rotini","1 cup shredded mozzarella cheese","1/2 cup shredded cheddar cheese","2 tablespoons chopped fresh parsley leaves","2 tablespoons unsalted butter","3 cloves garlic, minced","1 cup heavy cream, or more, to taste","1/4 cup freshly grated Parmesan","Kosher salt and freshly ground black pepper, to taste"],"instructions":["Preheat oven to 375 degrees F. Lightly oil a 9×9 baking dish or coat with nonstick spray.","To make the alfredo sauce, melt butter in a saucepan over medium heat. Add garlic, and cook, stirring frequently, until fragrant, about 1-2 minutes. Gradually whisk in heavy cream. Cook, whisking constantly, until incorporated, about 1-2 minutes. Stir in Parmesan until slightly thickened, about 1-2 minutes. If the mixture is too thick, add more heavy cream as needed; season with salt and pepper, to taste. Set aside.","Heat a large skillet over medium high heat. Add bacon and cook until brown and crispy, about 6-8 minutes. Drain excess fat; reserving 1 tablespoon in the skillet. Transfer bacon to a paper towel-lined plate.","In a gallon size Ziploc bag, add chicken, 1 tablespoon olive oil and Ranch Seasoning, shaking to coat thoroughly. Add chicken to the skillet and cook, flipping once, until cooked through, about 2-3 minutes on each side; set aside.","In a large pot of boiling salted water, cook pasta according to package instructions; drain well.","Add pasta to the prepared baking dish and layer with chicken and alfredo sauce; sprinkle with cheeses and bacon. Place into oven and bake until bubbly and heated through, about 15-20 minutes.","Serve immediately, garnished with parsley, if desired."],"tags":[],"time":{"prep":"15 minutes","cook":"30 minutes","active":"","inactive":"","ready":"","total":"45 minutes"},"servings":"4 servings","image":"https://s23209.pcdn.co/wp-content/uploads/2016/01/IMG_0791edit-720x1080.jpg","url":"https://damndelicious.net/2016/01/03/chicken-bacon-ranch-casserole/"}
+{
+  "name": "Chicken Bacon Ranch Casserole",
+  "ingredients": [
+    "4 slices bacon, diced",
+    "2 boneless, skinless chicken thighs*, cut into 1-inch chunks",
+    "1 tablespoon olive oil",
+    "1 tablespoon Ranch Seasoning and Salad Dressing Mix, or more, to taste",
+    "8 ounces rotini",
+    "1 cup shredded mozzarella cheese",
+    "1/2 cup shredded cheddar cheese",
+    "2 tablespoons chopped fresh parsley leaves",
+    "2 tablespoons unsalted butter",
+    "3 cloves garlic, minced",
+    "1 cup heavy cream, or more, to taste",
+    "1/4 cup freshly grated Parmesan",
+    "Kosher salt and freshly ground black pepper, to taste"
+  ],
+  "instructions": [
+    "Preheat oven to 375 degrees F. Lightly oil a 9×9 baking dish or coat with nonstick spray.",
+    "To make the alfredo sauce, melt butter in a saucepan over medium heat. Add garlic, and cook, stirring frequently, until fragrant, about 1-2 minutes. Gradually whisk in heavy cream. Cook, whisking constantly, until incorporated, about 1-2 minutes. Stir in Parmesan until slightly thickened, about 1-2 minutes. If the mixture is too thick, add more heavy cream as needed; season with salt and pepper, to taste. Set aside.",
+    "Heat a large skillet over medium high heat. Add bacon and cook until brown and crispy, about 6-8 minutes. Drain excess fat; reserving 1 tablespoon in the skillet. Transfer bacon to a paper towel-lined plate.",
+    "In a gallon size Ziploc bag, add chicken, 1 tablespoon olive oil and Ranch Seasoning, shaking to coat thoroughly. Add chicken to the skillet and cook, flipping once, until cooked through, about 2-3 minutes on each side; set aside.",
+    "In a large pot of boiling salted water, cook pasta according to package instructions; drain well.",
+    "Add pasta to the prepared baking dish and layer with chicken and alfredo sauce; sprinkle with cheeses and bacon. Place into oven and bake until bubbly and heated through, about 15-20 minutes.",
+    "Serve immediately, garnished with parsley, if desired."
+  ],
+  "tags": [
+    "dinner",
+    "main dish"
+  ],
+  "time": {
+    "prep": "15 minutes",
+    "cook": "30 minutes",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "45 minutes"
+  },
+  "servings": "4 servings",
+  "image": "https://s23209.pcdn.co/wp-content/uploads/2016/01/IMG_0791edit-720x1080.jpg",
+  "url": "https://damndelicious.net/2016/01/03/chicken-bacon-ranch-casserole/"
+}
