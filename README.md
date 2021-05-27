@@ -1,6 +1,6 @@
 I'm sure you arrived here from 11ty.dev and a warm welcome to you... but
 
-** Please consider using my newer and better starter https://github.com/danfascia/111ty **
+**Please consider using my newer and better starter https://github.com/danfascia/111ty**
 
 # Tai11s - the Eleventy + Tailwind CSS starter
 
