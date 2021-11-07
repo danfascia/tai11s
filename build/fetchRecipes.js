@@ -113,7 +113,7 @@ const getFormSubmittedUrls = () => {
       method: "get",
       url: "https://api.netlify.com/api/v1/forms/617441271a8d270007b8418c/submissions",
       headers: {
-        Authorization: "Bearer 9QbGFwiHp8nmCVxUxSE4L-ajtdeO90vXHaY6Pugjtuw",
+        Authorization: process.env.NETLIFY_API_KEY,
       },
     };
 
