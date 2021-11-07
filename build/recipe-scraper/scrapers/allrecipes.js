@@ -2,12 +2,15 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const allRecipes = url => {
+const allRecipes = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("allrecipes.com/recipe")) {
-      reject(new Error("url provided must include 'allrecipes.com/recipe'"));
+      reject(
+        new RecipeError("url provided must include 'allrecipes.com/recipe'")
+      );
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -18,11 +21,11 @@ const allRecipes = url => {
           } else if ((Recipe.name = $("#recipe-main-content").text())) {
             oldAllRecipes($, Recipe);
           } else {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           }
           resolve(Recipe);
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }
@@ -64,10 +67,7 @@ const newAllRecipes = ($, Recipe) => {
   });
 
   $(".ingredients-item").each((i, el) => {
-    const ingredient = $(el)
-      .text()
-      .replace(/\s\s+/g, " ")
-      .trim();
+    const ingredient = $(el).text().replace(/\s\s+/g, " ").trim();
     Recipe.ingredients.push(ingredient);
   });
   $($(".instructions-section-item").find("p")).each((i, el) => {
@@ -80,18 +80,14 @@ const oldAllRecipes = ($, Recipe) => {
   Recipe.image = $("meta[property='og:image']").attr("content");
 
   $("#polaris-app label").each((i, el) => {
-    const item = $(el)
-      .text()
-      .replace(/\s\s+/g, "");
+    const item = $(el).text().replace(/\s\s+/g, "");
     if (item != "Add all ingredients to list" && item != "") {
       Recipe.ingredients.push(item);
     }
   });
 
   $(".step").each((i, el) => {
-    const step = $(el)
-      .text()
-      .replace(/\s\s+/g, "");
+    const step = $(el).text().replace(/\s\s+/g, "");
     if (step != "") {
       Recipe.instructions.push(step);
     }

@@ -2,8 +2,9 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const kitchenStories = url => {
+const kitchenStories = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (
@@ -11,7 +12,7 @@ const kitchenStories = url => {
       !url.includes("kitchenstories.com/de/rezepte")
     ) {
       reject(
-        new Error(
+        new RecipeError(
           "url provided must include 'kitchenstories.com/en/recipes' or 'kitchenstories.com/de/rezepte'"
         )
       );
@@ -36,15 +37,9 @@ const kitchenStories = url => {
             });
 
           $(".time-cell").each((i, el) => {
-            let title = $(el)
-              .children(".title")
-              .text();
-            let time = $(el)
-              .find(".time")
-              .text();
-            let unit = $(el)
-              .find(".unit")
-              .text();
+            let title = $(el).children(".title").text();
+            let time = $(el).find(".time").text();
+            let unit = $(el).find(".unit").text();
             if (parseInt(time)) {
               switch (title) {
                 case "Preparation":
@@ -71,12 +66,12 @@ const kitchenStories = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

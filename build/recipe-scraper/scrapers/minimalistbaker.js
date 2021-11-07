@@ -2,12 +2,15 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const minimalistBaker = url => {
+const minimalistBaker = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("minimalistbaker.com/")) {
-      reject(new Error("url provided must include 'minimalistbaker.com/'"));
+      reject(
+        new RecipeError("url provided must include 'minimalistbaker.com/'")
+      );
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -18,18 +21,11 @@ const minimalistBaker = url => {
           Recipe.name = $(".wprm-recipe-name").text();
 
           $(".wprm-recipe-ingredient").each((i, el) => {
-            Recipe.ingredients.push(
-              $(el)
-                .text()
-                .replace(/\s\s+/g, " ")
-                .trim()
-            );
+            Recipe.ingredients.push($(el).text().replace(/\s\s+/g, " ").trim());
           });
 
           $(".wprm-recipe-instruction-group").each((i, el) => {
-            let group = $(el)
-              .children(".wprm-recipe-group-name")
-              .text();
+            let group = $(el).children(".wprm-recipe-group-name").text();
             if (group.length) Recipe.instructions.push(group);
             $(el)
               .find(".wprm-recipe-instruction-text")
@@ -39,38 +35,31 @@ const minimalistBaker = url => {
           });
 
           $(".wprm-recipe-cuisine").each((i, el) => {
-            Recipe.tags.push(
-              $(el)
-                .find("a")
-                .text()
-            );
+            Recipe.tags.push($(el).find("a").text());
           });
 
-          Recipe.tags = $(".wprm-recipe-cuisine").text().split(',').map(x => x.trim());
+          Recipe.tags = $(".wprm-recipe-cuisine")
+            .text()
+            .split(",")
+            .map((x) => x.trim());
 
-          Recipe.time.prep = $(".wprm-recipe-time")
-            .first()
-            .text();
+          Recipe.time.prep = $(".wprm-recipe-time").first().text();
           Recipe.time.cook = $($(".wprm-recipe-time").get(1)).text();
-          Recipe.time.total = $(".wprm-recipe-time")
-            .last()
-            .text();
+          Recipe.time.total = $(".wprm-recipe-time").last().text();
 
-          Recipe.servings = $(".wprm-recipe-servings")
-            .first()
-            .text();
+          Recipe.servings = $(".wprm-recipe-servings").first().text();
 
           if (
             !Recipe.name ||
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

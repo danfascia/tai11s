@@ -1,4 +1,5 @@
 const fs = require("fs");
+const axios = require("axios");
 const path = require("path");
 const recipeScraper = require("./recipe-scraper/scrapers/");
 
@@ -17,9 +18,11 @@ const errors = [];
 
 async function init() {
   const cached = getCachedFilenames();
-  console.log("cached", JSON.stringify(cached));
   const urls = JSON.parse(fs.readFileSync(inputFilepath, { encoding: "utf8" }));
-  const uniqueUrls = [...new Set(urls)];
+  const formUrls = await getFormSubmittedUrls();
+  const allUrls = urls.concat(formUrls);
+
+  const uniqueUrls = [...new Set(allUrls)];
   // loop through the URLs and fetch the content
   for (let i = 0; i < uniqueUrls.length; i++) {
     const url = uniqueUrls[i];
@@ -29,7 +32,10 @@ async function init() {
       recipe.url = url;
     } catch (e) {
       console.log(`error scraping recipe for ${url}`, e);
-      errors.push(url);
+      errors.push({
+        url: url,
+        error: e,
+      });
     }
     if (recipe) {
       let slug = recipe.name
@@ -99,6 +105,32 @@ const alphaSort = (a, b) => {
     return -1;
   }
   return 0;
+};
+
+const getFormSubmittedUrls = () => {
+  return new Promise((resolve, reject) => {
+    var config = {
+      method: "get",
+      url: "https://api.netlify.com/api/v1/forms/617441271a8d270007b8418c/submissions",
+      headers: {
+        Authorization: "Bearer 9QbGFwiHp8nmCVxUxSE4L-ajtdeO90vXHaY6Pugjtuw",
+      },
+    };
+
+    axios(config)
+      .then((response) => {
+        const result = response.data;
+
+        const urls = [];
+        for (let i = 0; i < result.length; i++) {
+          urls.push(result[i].data.href);
+        }
+        resolve(urls);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 };
 
 init();

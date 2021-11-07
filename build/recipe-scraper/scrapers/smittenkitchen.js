@@ -2,12 +2,15 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const smittenKitchen = url => {
+const smittenKitchen = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("smittenkitchen.com/")) {
-      reject(new Error("url provided must include 'smittenkitchen.com/'"));
+      reject(
+        new RecipeError("url provided must include 'smittenkitchen.com/'")
+      );
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -20,10 +23,7 @@ const smittenKitchen = url => {
           }
 
           $("a[rel='category tag']").each((i, el) => {
-            Recipe.tags.push(
-              $(el)
-                .text()
-            );
+            Recipe.tags.push($(el).text());
           });
 
           if (
@@ -31,12 +31,12 @@ const smittenKitchen = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }
@@ -53,10 +53,7 @@ const oldSmitten = ($, Recipe) => {
   Recipe.image = $("meta[property='og:image']").attr("content");
   body.each((i, el) => {
     if (i === 0) {
-      Recipe.name = $(el)
-        .children("b")
-        .text()
-        .trim();
+      Recipe.name = $(el).children("b").text().trim();
     } else if (
       $(el).children("br").length &&
       !$(el).children("b").length &&
@@ -65,24 +62,18 @@ const oldSmitten = ($, Recipe) => {
     ) {
       ingredientSwitch = true;
       let updatedIngredients = Recipe.ingredients.concat(
-        $(el)
-          .text()
-          .trim()
-          .split("\n")
+        $(el).text().trim().split("\n")
       );
       Recipe.ingredients = updatedIngredients;
     } else if (ingredientSwitch) {
       let updatedInstructions = Recipe.instructions.concat(
-        $(el)
-          .text()
-          .trim()
-          .split("\n")
+        $(el).text().trim().split("\n")
       );
       Recipe.instructions = updatedInstructions;
     } else {
       let possibleServing = $(el).text();
       if (servingsRegex.test(possibleServing)) {
-        possibleServing.split("\n").forEach(line => {
+        possibleServing.split("\n").forEach((line) => {
           if (servingsRegex.test(line)) {
             Recipe.servings = line.substring(line.indexOf(":") + 2);
           }
@@ -107,7 +98,7 @@ const newSmitten = ($, Recipe) => {
   Recipe.instructions = $(".jetpack-recipe-directions")
     .text()
     .split("\n")
-    .filter(instruction => {
+    .filter((instruction) => {
       if (
         !instruction ||
         instruction.includes("Do More:TwitterFacebookPinterestPrintEmail") ||
@@ -127,7 +118,7 @@ const newSmitten = ($, Recipe) => {
         recipeContents.indexOf("Rate this:")
       )
       .split("\n")
-      .filter(instruction => {
+      .filter((instruction) => {
         if (
           !instruction ||
           instruction.includes("Do More:TwitterFacebookPinterestPrintEmail") ||

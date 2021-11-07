@@ -2,13 +2,14 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const thePioneerWoman = url => {
+const thePioneerWoman = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("thepioneerwoman.com/food-cooking/")) {
       reject(
-        new Error(
+        new RecipeError(
           "url provided must include 'thepioneerwoman.com/food-cooking/'"
         )
       );
@@ -18,28 +19,17 @@ const thePioneerWoman = url => {
           const $ = cheerio.load(html);
 
           Recipe.image = $("meta[property='og:image']").attr("content");
-          Recipe.name = $(".recipe-hed")
-            .first()
-            .text();
+          Recipe.name = $(".recipe-hed").first().text();
 
           $(".ingredient-item").each((i, el) => {
-            Recipe.ingredients.push(
-              $(el)
-                .text()
-                .replace(/\s\s+/g, " ")
-                .trim()
-            );
+            Recipe.ingredients.push($(el).text().replace(/\s\s+/g, " ").trim());
           });
 
           $(".direction-lists")
             .find("li")
             .each((i, el) => {
               if (el.type === "text") {
-                Recipe.instructions.push(
-                  $(el)
-                    .text()
-                    .trim()
-                );
+                Recipe.instructions.push($(el).text().trim());
               }
             });
           if (!Recipe.instructions.length) {
@@ -47,11 +37,7 @@ const thePioneerWoman = url => {
               .contents()
               .each((i, el) => {
                 if (el.type === "text") {
-                  Recipe.instructions.push(
-                    $(el)
-                      .text()
-                      .trim()
-                  );
+                  Recipe.instructions.push($(el).text().trim());
                 }
               });
           }
@@ -77,12 +63,12 @@ const thePioneerWoman = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

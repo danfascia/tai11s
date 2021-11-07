@@ -2,12 +2,15 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const bbcGoodFood = url => {
+const bbcGoodFood = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("bbcgoodfood.com/recipes/")) {
-      reject(new Error("url provided must include 'bbcgoodfood.com/recipes/'"));
+      reject(
+        new RecipeError("url provided must include 'bbcgoodfood.com/recipes/'")
+      );
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -19,11 +22,7 @@ const bbcGoodFood = url => {
           $(".recipe-template__ingredients")
             .find(".list-item")
             .each((i, el) => {
-              Recipe.ingredients.push(
-                $(el)
-                  .text()
-                  .replace(" ,", ",")
-              );
+              Recipe.ingredients.push($(el).text().replace(" ,", ","));
             });
 
           $(".recipe-template__method-steps")
@@ -38,13 +37,9 @@ const bbcGoodFood = url => {
             .each((i, el) => {
               const text = $(el).text();
               if (text.includes("Prep")) {
-                Recipe.time.prep = $(el)
-                  .find("time")
-                  .text();
+                Recipe.time.prep = $(el).find("time").text();
               } else if (text.includes("Cook")) {
-                Recipe.time.cook = $(el)
-                  .find("time")
-                  .text();
+                Recipe.time.cook = $(el).find("time").text();
               }
             });
 
@@ -57,12 +52,12 @@ const bbcGoodFood = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

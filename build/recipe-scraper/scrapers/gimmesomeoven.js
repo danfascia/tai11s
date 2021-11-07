@@ -2,12 +2,13 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const gimmeSomeOven = url => {
+const gimmeSomeOven = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("gimmesomeoven.com/")) {
-      reject(new Error("url provided must include 'gimmesomeoven.com/'"));
+      reject(new RecipeError("url provided must include 'gimmesomeoven.com/'"));
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -36,15 +37,10 @@ const gimmeSomeOven = url => {
           Recipe.time.total = $(".tasty-recipes-total-time").text();
 
           $(".tasty-recipes-yield-scale").remove();
-          Recipe.servings = $(".tasty-recipes-yield")
-            .text()
-            .trim();
+          Recipe.servings = $(".tasty-recipes-yield").text().trim();
 
           $("a[rel='category tag']").each((i, el) => {
-            Recipe.tags.push(
-              $(el)
-                .text()
-            );
+            Recipe.tags.push($(el).text());
           });
 
           if (
@@ -52,12 +48,12 @@ const gimmeSomeOven = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

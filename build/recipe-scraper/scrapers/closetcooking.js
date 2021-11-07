@@ -2,11 +2,12 @@ const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
 const puppeteerFetch = require("../helpers/puppeteerFetch");
+const RecipeError = require("../helpers/RecipeError");
 
-const closetCooking = url => {
+const closetCooking = (url) => {
   return new Promise(async (resolve, reject) => {
     if (!url.includes("closetcooking.com/")) {
-      reject(new Error("url provided must include 'closetcooking.com/'"));
+      reject(new RecipeError("url provided must include 'closetcooking.com/'"));
     } else {
       try {
         const html = await puppeteerFetch(url);
@@ -29,10 +30,7 @@ const closetCooking = url => {
           });
 
         $("a[rel='category tag']").each((i, el) => {
-          Recipe.tags.push(
-            $(el)
-              .text()
-          );
+          Recipe.tags.push($(el).text());
         });
 
         let metaData = $(".time");
@@ -53,12 +51,12 @@ const closetCooking = url => {
           !Recipe.ingredients.length ||
           !Recipe.instructions.length
         ) {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         } else {
           resolve(Recipe);
         }
       } catch (error) {
-        reject(new Error("No recipe found on page"));
+        reject(new RecipeError("No recipe found on page"));
       }
     }
   });

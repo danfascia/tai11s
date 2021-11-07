@@ -1,12 +1,14 @@
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
+
 const puppeteerFetch = require("../helpers/puppeteerFetch");
 
-const nomNomPaleo = url => {
+const nomNomPaleo = (url) => {
   return new Promise(async (resolve, reject) => {
     if (!url.includes("nomnompaleo.com/")) {
-      reject(new Error("url provided must include 'nomnompaleo.com/'"));
+      reject(new RecipeError("url provided must include 'nomnompaleo.com/'"));
     } else {
       try {
         const html = await puppeteerFetch(url);
@@ -17,20 +19,16 @@ const nomNomPaleo = url => {
         Recipe.name = $(".wprm-recipe-name").text();
 
         $(".wprm-recipe-ingredient").each((i, el) => {
-          Recipe.ingredients.push(
-            $(el)
-              .text()
-              .replace(/\s\s+/g, " ")
-              .trim()
-          );
+          Recipe.ingredients.push($(el).text().replace(/\s\s+/g, " ").trim());
         });
 
-        Recipe.tags = $(".wprm-recipe-keyword").text().split(',').map(x => x.trim());
+        Recipe.tags = $(".wprm-recipe-keyword")
+          .text()
+          .split(",")
+          .map((x) => x.trim());
 
         $(".wprm-recipe-instruction-group").each((i, el) => {
-          let groupName = $(el)
-            .children(".wprm-recipe-group-name")
-            .text();
+          let groupName = $(el).children(".wprm-recipe-group-name").text();
           if (groupName.length) {
             Recipe.instructions.push(groupName);
           }
@@ -52,12 +50,12 @@ const nomNomPaleo = url => {
           !Recipe.ingredients.length ||
           !Recipe.instructions.length
         ) {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         } else {
           resolve(Recipe);
         }
       } catch (error) {
-        reject(new Error("No recipe found on page"));
+        reject(new RecipeError("No recipe found on page"));
       }
     }
   });

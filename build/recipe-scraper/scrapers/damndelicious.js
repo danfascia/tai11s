@@ -1,12 +1,14 @@
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
+
 const puppeteerFetch = require("../helpers/puppeteerFetch");
 
-const damnDelicious = url => {
+const damnDelicious = (url) => {
   return new Promise(async (resolve, reject) => {
     if (!url.includes("damndelicious.net")) {
-      reject(new Error("url provided must include 'damndelicious.net'"));
+      reject(new RecipeError("url provided must include 'damndelicious.net'"));
     } else {
       try {
         const html = await puppeteerFetch(url);
@@ -16,19 +18,13 @@ const damnDelicious = url => {
         let titleDiv = $(".recipe-title");
 
         Recipe.image = $("meta[property='og:image']").attr("content");
-        Recipe.name = $(titleDiv)
-          .children("h2")
-          .text();
+        Recipe.name = $(titleDiv).children("h2").text();
 
         $(titleDiv)
           .find("p")
           .each((i, el) => {
-            let title = $(el)
-              .children("strong")
-              .text();
-            let data = $(el)
-              .children("span")
-              .text();
+            let title = $(el).children("strong").text();
+            let data = $(el).children("span").text();
 
             switch (title) {
               case "Yield:":
@@ -63,12 +59,12 @@ const damnDelicious = url => {
           !Recipe.ingredients.length ||
           !Recipe.instructions.length
         ) {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         } else {
           resolve(Recipe);
         }
       } catch (error) {
-        reject(new Error("No recipe found on page"));
+        reject(new RecipeError("No recipe found on page"));
       }
     }
   });

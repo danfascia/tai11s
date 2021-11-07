@@ -9,8 +9,8 @@ description: Recipes without the annoying ads!
     <section class="px-4">
 			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
 			<ul class="list my-8 px-8">
-				{% for url in errors %}
-				<li><a href="{{url}}">{{url}}</a></li>
+				{% for e in errors %}
+				<li>{{e.error.message}}: <a href="{{e.url}}">{{e.url}}</a></li>
 				{% endfor %}
 			</ul>
     </section> 

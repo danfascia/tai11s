@@ -2,13 +2,16 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 const puppeteerFetch = require("../helpers/puppeteerFetch");
 
-const theRealFoodRds = url => {
+const theRealFoodRds = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise(async (resolve, reject) => {
     if (!url.includes("therealfoodrds.com/")) {
-      reject(new Error("url provided must include 'therealfoodrds.com/'"));
+      reject(
+        new RecipeError("url provided must include 'therealfoodrds.com/'")
+      );
     } else {
       try {
         const html = await puppeteerFetch(url);
@@ -24,24 +27,19 @@ const theRealFoodRds = url => {
         $(".tasty-recipes-ingredients")
           .find("li")
           .each((i, el) => {
-            Recipe.ingredients.push(
-              $(el)
-                .text()
-                .replace(/\s\s+/g, "")
-            );
+            Recipe.ingredients.push($(el).text().replace(/\s\s+/g, ""));
           });
 
         $(".tasty-recipes-instructions")
           .find("h4, li")
           .each((i, el) => {
-            Recipe.instructions.push(
-              $(el)
-                .text()
-                .replace(/\s\s+/g, "")
-            );
+            Recipe.instructions.push($(el).text().replace(/\s\s+/g, ""));
           });
 
-        Recipe.tags = $(".tasty-recipes-category").text().split('|').map(x => x.trim());
+        Recipe.tags = $(".tasty-recipes-category")
+          .text()
+          .split("|")
+          .map((x) => x.trim());
 
         Recipe.time.prep = $(".tasty-recipes-prep-time").text();
         Recipe.time.cook = $(".tasty-recipes-cook-time").text();
@@ -57,12 +55,12 @@ const theRealFoodRds = url => {
           !Recipe.ingredients.length ||
           !Recipe.instructions.length
         ) {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         } else {
           resolve(Recipe);
         }
       } catch (error) {
-        reject(new Error("No recipe found on page"));
+        reject(new RecipeError("No recipe found on page"));
       }
     }
   });

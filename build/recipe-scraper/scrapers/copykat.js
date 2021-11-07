@@ -1,12 +1,14 @@
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
+
 const puppeteerFetch = require("../helpers/puppeteerFetch");
 
-const copykat = url => {
+const copykat = (url) => {
   return new Promise(async (resolve, reject) => {
     if (!url.includes("copykat.com/")) {
-      reject(new Error("url provided must include 'copykat.com/'"));
+      reject(new RecipeError("url provided must include 'copykat.com/'"));
     } else {
       try {
         let html = await puppeteerFetch(url);
@@ -19,21 +21,11 @@ const copykat = url => {
         ).text();
 
         $(".wprm-recipe-ingredient").each((i, el) => {
-          Recipe.ingredients.push(
-            $(el)
-              .text()
-              .replace(/\s\s+/g, " ")
-              .trim()
-          );
+          Recipe.ingredients.push($(el).text().replace(/\s\s+/g, " ").trim());
         });
 
         $(".wprm-recipe-instructions").each((i, el) => {
-          Recipe.instructions.push(
-            $(el)
-              .text()
-              .replace(/\s\s+/g, " ")
-              .trim()
-          );
+          Recipe.instructions.push($(el).text().replace(/\s\s+/g, " ").trim());
         });
 
         Recipe.time.prep = $(
@@ -53,12 +45,12 @@ const copykat = url => {
           !Recipe.ingredients.length ||
           !Recipe.instructions.length
         ) {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         } else {
           resolve(Recipe);
         }
       } catch (error) {
-        reject(new Error("No recipe found on page"));
+        reject(new RecipeError("No recipe found on page"));
       }
     }
   });

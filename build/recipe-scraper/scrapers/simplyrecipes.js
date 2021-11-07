@@ -2,13 +2,16 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const simplyRecipes = url => {
+const simplyRecipes = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("simplyrecipes.com/recipes/")) {
       reject(
-        new Error("url provided must include 'simplyrecipes.com/recipes/'")
+        new RecipeError(
+          "url provided must include 'simplyrecipes.com/recipes/'"
+        )
       );
     } else {
       request(url, (error, response, html) => {
@@ -16,9 +19,7 @@ const simplyRecipes = url => {
           const $ = cheerio.load(html);
 
           Recipe.image = $("meta[property='og:image']").attr("content");
-          Recipe.name = $(".recipe-callout")
-            .children("h2")
-            .text();
+          Recipe.name = $(".recipe-callout").children("h2").text();
 
           $(".recipe-ingredients")
             .find("li.ingredient, p")
@@ -36,11 +37,7 @@ const simplyRecipes = url => {
             });
 
           $(".taxonomy-term").each((i, el) => {
-            Recipe.tags.push(
-              $(el)
-                .find("span")
-                .text()
-            );
+            Recipe.tags.push($(el).find("span").text());
           });
 
           Recipe.time.prep = $(".preptime").text();
@@ -52,12 +49,12 @@ const simplyRecipes = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

@@ -1,19 +1,26 @@
 class RecipeError extends Error {
-  constructor(recipeName, recipeIngredients, recipeInstructions, ...params) {
+  constructor(
+    message,
+    recipeName,
+    recipeIngredients,
+    recipeInstructions,
+    ...params
+  ) {
     // Pass remaining arguments (including vendor specific ones) to parent constructor
-    super(...params)
+    super(...params);
 
     // Maintains proper stack trace for where our error was thrown (only available on V8)
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, RecipeError)
+      Error.captureStackTrace(this, RecipeError);
     }
 
-    this.name = 'RecipeError'
+    this.name = "RecipeError";
+    this.message = message;
     // Custom debugging information
-    this.recipeName = recipeName
-    this.recipeIngredients = recipeIngredients
-    this.recipeInstructions = recipeInstructions
-    this.date = new Date()
+    this.recipeName = recipeName;
+    this.recipeIngredients = recipeIngredients;
+    this.recipeInstructions = recipeInstructions;
+    this.date = new Date();
   }
 }
 

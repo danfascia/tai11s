@@ -2,12 +2,15 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const whatsGabyCooking = url => {
+const whatsGabyCooking = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("whatsgabycooking.com/")) {
-      reject(new Error("url provided must include 'whatsgabycooking.com/'"));
+      reject(
+        new RecipeError("url provided must include 'whatsgabycooking.com/'")
+      );
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -17,18 +20,14 @@ const whatsGabyCooking = url => {
           Recipe.name = $(".wprm-recipe-name").text();
 
           $(".wprm-recipe-ingredient").each((i, el) => {
-            let elText = $(el)
-              .text()
-              .trim();
+            let elText = $(el).text().trim();
             if (elText.length) {
               Recipe.ingredients.push(elText);
             }
           });
 
           $(".wprm-recipe-instruction-group").each((i, el) => {
-            let groupName = $(el)
-              .find(".wprm-recipe-group-name")
-              .text();
+            let groupName = $(el).find(".wprm-recipe-group-name").text();
             let instruction = $(el)
               .find(".wprm-recipe-instruction-text")
               .text();
@@ -38,7 +37,10 @@ const whatsGabyCooking = url => {
             Recipe.instructions.push(instruction);
           });
 
-          Recipe.tags = $(".wprm-recipe-cuisine").text().split(',').map(x => x.trim());
+          Recipe.tags = $(".wprm-recipe-cuisine")
+            .text()
+            .split(",")
+            .map((x) => x.trim());
 
           const times = $(".wprm-recipe-time");
           Recipe.time.prep = $(times.first()).text();
@@ -50,12 +52,12 @@ const whatsGabyCooking = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

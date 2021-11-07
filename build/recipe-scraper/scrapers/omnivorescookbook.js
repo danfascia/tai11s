@@ -2,12 +2,15 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const RecipeSchema = require("../helpers/recipe-schema");
+const RecipeError = require("../helpers/RecipeError");
 
-const omnivorescookbook = url => {
+const omnivorescookbook = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
     if (!url.includes("omnivorescookbook.com/")) {
-      reject(new Error("url provided must include 'omnivorescookbook.com/'"));
+      reject(
+        new RecipeError("url provided must include 'omnivorescookbook.com/'")
+      );
     } else {
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
@@ -17,9 +20,7 @@ const omnivorescookbook = url => {
           Recipe.name = $(".wprm-recipe-name").text();
 
           $(".wprm-recipe-ingredient-group").each((i, el) => {
-            let group = $(el)
-              .find(".wprm-recipe-group-name")
-              .text();
+            let group = $(el).find(".wprm-recipe-group-name").text();
             if (group) {
               Recipe.ingredients.push(group);
             }
@@ -27,19 +28,14 @@ const omnivorescookbook = url => {
               .find(".wprm-recipe-ingredient")
               .each((i, el) => {
                 Recipe.ingredients.push(
-                  $(el)
-                    .text()
-                    .replace(/\s\s+/g, " ")
-                    .trim()
+                  $(el).text().replace(/\s\s+/g, " ").trim()
                 );
               });
           });
 
           $(".wprm-recipe-instruction-group").each((i, el) => {
             Recipe.instructions.push(
-              $(el)
-                .children(".wprm-recipe-group-name")
-                .text()
+              $(el).children(".wprm-recipe-group-name").text()
             );
             $(el)
               .find(".wprm-recipe-instruction-text")
@@ -48,15 +44,14 @@ const omnivorescookbook = url => {
               });
           });
 
-          Recipe.tags = $(".wprm-recipe-keyword").text().split(',').map(x => x.trim());
+          Recipe.tags = $(".wprm-recipe-keyword")
+            .text()
+            .split(",")
+            .map((x) => x.trim());
 
           $(".wprm-recipe-time-container").each((i, el) => {
-            let label = $(el)
-              .children(".wprm-recipe-time-label")
-              .text();
-            let time = $(el)
-              .children(".wprm-recipe-time")
-              .text();
+            let label = $(el).children(".wprm-recipe-time-label").text();
+            let time = $(el).children(".wprm-recipe-time").text();
             if (label.includes("Prep")) {
               Recipe.time.prep = time;
             } else if (label.includes("Cook")) {
@@ -75,12 +70,12 @@ const omnivorescookbook = url => {
             !Recipe.ingredients.length ||
             !Recipe.instructions.length
           ) {
-            reject(new Error("No recipe found on page"));
+            reject(new RecipeError("No recipe found on page"));
           } else {
             resolve(Recipe);
           }
         } else {
-          reject(new Error("No recipe found on page"));
+          reject(new RecipeError("No recipe found on page"));
         }
       });
     }

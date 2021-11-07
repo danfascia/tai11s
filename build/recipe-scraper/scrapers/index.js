@@ -1,4 +1,5 @@
 const parseDomain = require("parse-domain");
+const RecipeError = require("../helpers/RecipeError");
 
 const domains = {
   "101cookbooks": require("./101cookbooks"),
@@ -43,10 +44,10 @@ const domains = {
   thespruceeats: require("./thespruceeats"),
   whatsgabycooking: require("./whatsgabycooking"),
   woolworths: require("./woolworths"),
-  yummly: require("./yummly")
+  yummly: require("./yummly"),
 };
 
-const recipeScraper = url => {
+const recipeScraper = (url) => {
   return new Promise((resolve, reject) => {
     let parse = parseDomain(url);
     if (parse) {
@@ -54,10 +55,10 @@ const recipeScraper = url => {
       if (domains[domain] !== undefined) {
         resolve(domains[domain](url));
       } else {
-        resolve(domains['fallback'](url));
+        resolve(domains["fallback"](url));
       }
     } else {
-      reject(new Error("Failed to parse domain"));
+      reject(new RecipeError("Failed to parse domain"));
     }
   });
 };
