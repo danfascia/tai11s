@@ -1,13 +1,12 @@
 ---
-layout: layouts/base.njk
 title: Errors
 description: Recipes without the annoying ads!
 ---
+{% extends "layouts/base.njk" %}
 
-<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:rounded-lg shadow-2xl flex items-end">
-	    
-    <section class="px-4">
-			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
+{% block content %}
+    <section class="content">
+    	<h2 class="text-4xl text-blue-600 mb-8">Errors</h2>
 			<ul class="list my-8 px-8">
 				{% for e in errors %}
 				<li>{{e.error.message}}: <a href="{{e.url}}">{{e.url}}</a></li>
@@ -15,4 +14,4 @@ description: Recipes without the annoying ads!
 			</ul>
     </section> 
 
-</div>
+{% endblock %}

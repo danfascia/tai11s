@@ -59,38 +59,10 @@ module.exports = function (eleventyConfig) {
     html += `</ul></div>`;
 
     html += `
-      <script>
+    <script>
       const recipes = ${JSON.stringify(recipes)};
       const tags = ${JSON.stringify(tags)};
-        document.getElementById('SearchInput').addEventListener('keyup', (ev)=> {
-          const searchString = document.getElementById('SearchInput').value.toLowerCase();
-          let html = '<ul class="list my-8 px-8">';
-          tags.forEach((tag) => {
-            html += '<h3 class="mt-4 mb-1">' + tag.label + '</h3>';
-            for (let i = 0; i < recipes.length; i++) {
-              const recipe = recipes[i];
-              let includesTag = false;
-              recipe.tags.forEach(t => {
-                if (t.toLowerCase() === tag.id) includesTag = true;
-              })
-              if (recipe.name.toLowerCase().includes(searchString) && includesTag) {
-                html += '<li><a href="/recipes/' + recipe.slug + '/">' + recipe.name + '</a></li>';
-              }
-            }
-          });
-
-          html += '<h3 class="mt-4 mb-1">Untagged</h3>';
-          for (let i = 0; i < recipes.length; i++) {
-            const recipe = recipes[i];
-            if (recipe.name.toLowerCase().includes(searchString) && !recipe.tags.length) {
-              html += '<li><a href="/recipes/' + recipe.slug + '/">' + recipe.name + '</a></li>';
-            }
-          }
-          html += '</ul>';
-          document.getElementById('RecipeList').innerHTML = html;
-        })
-      </script>
-    `;
+    </script>`;
 
     return html;
   });

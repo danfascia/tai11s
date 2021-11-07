@@ -1,41 +1,38 @@
 ---
-layout: layouts/base.njk
 title: Add a Recipe
 description: Recipes without the annoying ads!
 ---
+{% extends "layouts/base.njk" %}
 
-<div class="max-w-4xl bg-white mx-auto text-xl pt-8 my-16 md:rounded-lg shadow-2xl flex items-end">
-	    
-    <section class="px-4">
-			<h1 class="text-6xl text-blue-900 mb-8">Ad-Free Recipes</h1>
-      <h2 class="text-4xl text-blue-600 mb-8">Add a Recipe</h2>
-      <p class="my-4">New recipes take about 5 minute to post.</p>
-      <p class="my-4">If you aren't seeing the recipe by then it probably errored out and will need to be manually resolved.</p>
-      <h3>Add by URL</h3>
-			<form name="recipe-url" method="POST" data-netlify="true" class="bg-gray-300 rounded p-4 ">
-        <p class="my-2">
-          <label>Your Name: <input class="p-2 rounded ml-4 w-4/5 box-border" type="text" name="name" /></label>   
-        </p>
-        <p class="my-2">
-          <label>Recipe URL: <input class="p-2 rounded ml-4 w-4/5 box-border" type="url" name="href" /></label>
-        </p>
-        <p class="my-2">
-          <button type="submit" class="bg-pink-600 text-white p-4 rounded mt-8">Submit</button>
-        </p>
-      </form>
-      <h3>Add as text</h3>
-      <form name="recipe-text" method="POST" data-netlify="true" class="bg-gray-300 rounded p-4 ">
-        <p class="my-2">
-          <label>Your Name: <input class="p-2 rounded ml-4 w-4/5 box-border"  type="text" name="name" /></label>   
-        </p>
-        <p class="my-2">
-          <label>Recipe Text: <textarea class="p-2 rounded ml-4 w-4/5 box-border h-64" name="recipe" /></textarea></label>
-        </p>
-        <p class="my-2">
-          <button type="submit" class="bg-pink-600 text-white p-4 rounded mt-8">Submit</button>
-        </p>
-      </form>
-    </section> 
+{% block content %}
+  <section class="content">
+    <h2 class="text-4xl text-blue-600 mb-8">Add a Recipe</h2>
+    <p class="my-4">New recipes take about 5 minute to post.</p>
+    <p class="my-4">If you aren't seeing the recipe by then it probably errored out and will need to be manually resolved.</p>
+    <h3 class="mb-4 text-2xl">Add by URL</h3>
+    <form name="recipe-url" method="POST" data-netlify="true" class="bg-gray-300 rounded p-4 mb-16">
+      <p class="my-2">
+        <label>Your Name: <input class="p-2 rounded ml-4 w-4/5 box-border" type="text" name="name" /></label>   
+      </p>
+      <p class="my-2">
+        <label>Recipe URL: <input class="p-2 rounded ml-4 w-4/5 box-border" type="url" name="href" /></label>
+      </p>
+      <p class="my-2">
+        <button type="submit" class="bg-pink-600 text-white p-4 rounded mt-8">Submit</button>
+      </p>
+    </form>
+    <h3 class="mb-4 text-2xl">Add as text</h3>
+    <form name="recipe-text" method="POST" data-netlify="true" class="bg-gray-300 rounded p-4 mb-16">
+      <p class="my-2">
+        <label>Your Name: <input class="p-2 rounded ml-4 w-4/5 box-border"  type="text" name="name" /></label>   
+      </p>
+      <p class="my-2">
+        <label>Recipe Text: <textarea class="p-2 rounded ml-4 w-4/5 box-border h-64" name="recipe" /></textarea></label>
+      </p>
+      <p class="my-2">
+        <button type="submit" class="bg-pink-600 text-white p-4 rounded mt-8">Submit</button>
+      </p>
+    </form>
+  </section> 
+{% endblock content %}
       
-
-</div>
