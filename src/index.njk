@@ -5,13 +5,15 @@ description: Recipes without the annoying ads!
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-	<section class="content">
+	<section>
     <h2 class="text-4xl text-blue-600 mb-8">Recipes</h2>
 		<p>Note that some recipes are not compatible. Those are listed here as Errored Recipes and will periodically be resolved.</a>
 		<div>
 			<a class="inline-block my-2 px-4 py-2 bg-blue-500 text-white hover:text-white border-blue-600 border-2 shadow-lg" href="/errors/">Errored Recipes</a>
 			<a class="inline-block my-2 px-4 py-2 bg-blue-500 text-white hover:text-white border-blue-600 border-2 shadow-lg" href="/add/">Add a Recipe</a>
-			</div>
-		{% recipeList recipes, "name" %}
+		</div>
+		<div class="content">
+			{% recipeList recipes, "name" %}
+		</div>
 	</section> 
 {% endblock %}

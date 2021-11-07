@@ -7,6 +7,9 @@ pagination:
 permalink: "recipes/{{ recipe.name | slug }}/"
 ---
 {% extends "layouts/base.njk" %}
+
+{% block title %}{{recipe.name }} | {{super()}} {% endblock %}
+
 {% block content %}
     <section class="content">
         <h1 class="text-4xl">{{ recipe.name }}</h1>

@@ -3,7 +3,7 @@ title: Add a Recipe
 description: Recipes without the annoying ads!
 ---
 {% extends "layouts/base.njk" %}
-
+{% block title %}Add a Recipe | {{super()}} {% endblock %}
 {% block content %}
   <section class="content">
     <h2 class="text-4xl text-blue-600 mb-8">Add a Recipe</h2>
