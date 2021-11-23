@@ -3,7 +3,6 @@ const fs = require("fs");
 const axios = require("axios");
 const path = require("path");
 const recipeScraper = require("./recipe-scraper/scrapers/");
-const { exit } = require("process");
 
 const inputFilepath = path.join(__dirname, "urls.json");
 const outputFilepath = path.join(
@@ -13,6 +12,15 @@ const outputFilepath = path.join(
   "_data",
   "recipes.json"
 );
+const cachedUrlsFilepath = path.join(
+  __dirname,
+  "..",
+  "src",
+  "_data",
+  "recipeUrls.json"
+);
+const cachedRecipeUrls = require(cachedUrlsFilepath);
+
 const errorFilepath = path.join(__dirname, "..", "src", "_data", "errors.json");
 const cachedFilepath = path.join(__dirname, "..", "src", "_data", "recipes");
 const recipes = [];
@@ -20,18 +28,28 @@ const errors = [];
 
 async function init() {
   const cached = getCachedFilenames();
-  const urls = JSON.parse(fs.readFileSync(inputFilepath, { encoding: "utf8" }));
-  const formUrls = await getFormSubmittedUrls();
-  const allUrls = urls.concat(formUrls);
+  const urls = getUrls();
 
-  const uniqueUrls = [...new Set(allUrls)];
   // loop through the URLs and fetch the content
-  for (let i = 0; i < uniqueUrls.length; i++) {
-    const url = uniqueUrls[i];
-    let recipe;
+  for (let i = 0; i < urls.length; i++) {
+    const url = urls[i];
+    // if we've already scraped let's not scrape again
+    if (cachedRecipeUrls.includes(url)) continue;
+    // scrape for data
     try {
-      recipe = await recipeScraper(url);
+      const recipe = await recipeScraper(url);
       recipe.url = url;
+      if (recipe) {
+        let slug = recipe.name
+          .toLowerCase()
+          .replace(/ /g, "-")
+          .replace(/[^\w-]+/g, "");
+        slug += ".json";
+        console.log("slug", slug);
+        storeData(recipe, `${cachedFilepath}/${slug}`);
+        recipes.push(recipe);
+        cachedRecipeUrls.push(recipe.url);
+      }
     } catch (e) {
       console.log(`error scraping recipe for ${url}`, e);
       errors.push({
@@ -39,24 +57,11 @@ async function init() {
         error: e,
       });
     }
-    if (recipe) {
-      let slug = recipe.name
-        .toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
-      slug += ".json";
-      console.log("slug", slug);
-      if (!cached.includes(`${cachedFilepath}/${slug}`)) {
-        console.log("adding");
-        storeData(recipe, `${cachedFilepath}/${slug}`);
-        recipes.push(recipe);
-      }
-    }
   }
 
   console.log(`fetched ${recipes.length} recipes from URLs`);
 
-  // merge with any user entered recipes
+  // merge with any user entered recipes from Forestry
   console.log("combining all recipes");
   const allRecipes = combineFiles(recipes, cached);
 
@@ -64,11 +69,19 @@ async function init() {
   console.log("storing data");
   storeData(allRecipes.sort(alphaSort), outputFilepath);
   console.log(`Found ${recipes.length} Recipes`);
+  storeData(cachedRecipeUrls, cachedUrlsFilepath);
   if (errors.length) {
     console.log(`Errors: `, JSON.stringify(errors));
     storeData(errors, errorFilepath);
   }
 }
+
+const getUrls = async () => {
+  const urls = JSON.parse(fs.readFileSync(inputFilepath, { encoding: "utf8" }));
+  const formUrls = await getFormSubmittedUrls();
+  const allUrls = urls.concat(formUrls);
+  return [...new Set(allUrls)];
+};
 
 const getCachedFilenames = () => {
   const filenames = [];

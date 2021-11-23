@@ -1,62 +1,120 @@
-const request = require("request");
+const axios = require("axios");
 const cheerio = require("cheerio");
 
 const RecipeError = require("../helpers/RecipeError");
 const RecipeSchema = require("../helpers/recipe-schema");
 
 const getImage = ($) => {
-  let image;
-  image = $(".wprm-recipe-image img").attr("data-pin-media");
-  if ($(".tasty-recipes-image").length) {
-    image = $(".tasty-recipes-image img").attr("src");
+  const selectors = [".wprm-recipe-image img", ".tasty-recipes-image img"];
+  for (let i = 0; i < selectors.length; i++) {
+    const selector = selectors[i];
+    if ($(selector).length) {
+      return $(selector).eq(0).attr("src");
+    }
   }
-  return image;
+  return "";
 };
 
 const getName = ($) => {
-  let name = "";
-  name = $(".wprm-recipe-name").eq(0).text().trim();
-  if ($(".tasty-recipes-title").length) {
-    name = $(".tasty-recipes-title").eq(0).text().trim();
+  const selectors = [
+    ".recipe-title",
+    ".wprm-recipe-name",
+    ".ERSName",
+    ".tasty-recipes-title",
+    ".mv-create-title",
+    ".recipeHeader h1",
+    // fallback
+    "h1",
+  ];
+  for (let i = 0; i < selectors.length; i++) {
+    const selector = selectors[i];
+    if ($(selector).length) {
+      return $(selector).eq(0).text().trim();
+    }
   }
-  if ($(".ERSName").length) {
-    name = $(".ERSName").eq(0).text().trim();
+  return "";
+};
+
+const getPrepTime = ($) => {
+  const selectors = [
+    ".wprm-recipe-prep_time-minutes",
+    ".wprm-recipe-prep_timeunit-minutes",
+    ".mv-create-time-prep .mv-time-minutes",
+    "[itemprop='prepTime'] > strong",
+  ];
+  for (let i = 0; i < selectors.length; i++) {
+    const selector = selectors[i];
+    if ($(selector).length) {
+      return $(selector).eq(0).text();
+    }
   }
-  return name;
+  return "";
+};
+
+const getCookTime = ($) => {
+  const selectors = [
+    ".wprm-recipe-cook_time-minutes",
+    ".wprm-recipe-cook_timeunit-minutes",
+    ".mv-create-time-active .mv-time-minutes",
+    "[itemprop='cookTime'] > strong",
+  ];
+  for (let i = 0; i < selectors.length; i++) {
+    const selector = selectors[i];
+    if ($(selector).length) {
+      return $(selector).eq(0).text();
+    }
+  }
+  return "";
+};
+
+const getTotalTime = ($) => {
+  const selectors = [
+    ".wprm-recipe-total_time-minutes",
+    ".wprm-recipe-total_timeunit-minutes",
+    ".recipe-time + .recipe-yield-value",
+    ".tasty-recipes-total-time",
+    ".mv-create-time-total .mv-time-minutes",
+  ];
+  for (let i = 0; i < selectors.length; i++) {
+    const selector = selectors[i];
+    if ($(selector).length) {
+      return $(selector).eq(0).text();
+    }
+  }
+  return "";
 };
 
 const getTimes = ($) => {
-  const time = {
-    prep: "",
-    cook: "",
-    total: "",
+  return {
+    prep: getPrepTime($),
+    cook: getCookTime($),
+    total: getTotalTime($),
   };
-
-  time.prep =
-    $(".wprm-recipe-prep_time-minutes").text() +
-    " " +
-    $(".wprm-recipe-prep_timeunit-minutes").text();
-  time.cook =
-    $(".wprm-recipe-cook_time-minutes").text() +
-    " " +
-    $(".wprm-recipe-cook_timeunit-minutes").text();
-  time.total =
-    $(".wprm-recipe-total_time-minutes").text() +
-    " " +
-    $(".wprm-recipe-total_timeunit-minutes").text();
-
-  return time;
 };
 
 const getInstructions = ($) => {
   const instructions = [];
+  const selectors = [
+    ".wprm-recipe-instruction-text",
+    ".ERSInstructions > ol > li.instruction",
+    "ol.recipe-steps > li",
+    ".tasty-recipes-instructions ol > li",
+    ".mv-create-instructions > p",
+    ".recipeStep p",
+    ".directions p",
 
-  $(".wprm-recipe-instruction-text").each((i, el) => {
-    instructions.push($(el).remove("img").text().replace(/\s\s+/g, ""));
-  });
-  $(".ERSInstructions > ol > li.instruction").each((i, el) => {
-    instructions.push($(el).remove("img").text().replace(/\s\s+/g, ""));
-  });
+    // fallback
+    "ul > li",
+  ];
+
+  for (let i = 0; i < selectors.length; i++) {
+    if (instructions.length) break;
+    const selector = selectors[i];
+    $(selector).each((i, el) => {
+      instructions.push($(el).remove("img").text().replace(/\s\s+/g, ""));
+    });
+  }
+
   $(".tasty-recipes-instructions > ol").each((i, el) => {
     // get header
     instructions.push($(el).prev().text());
@@ -73,22 +131,27 @@ const getInstructions = ($) => {
 
 const getIngredients = ($) => {
   const ingredients = [];
+  const selectors = [
+    ".wprm-recipe-ingredients > .wprm-recipe-ingredient",
+    ".ERSIngredients > ul > li.ingredient",
+    "ul.recipe-ingredients",
+    ".wprm-recipe-ingredient-group > .wprm-recipe-ingredient",
+    ".tasty-recipes-ingredients ul > li",
+    ".mv-create-ingredients ul > li",
+    "#recipeIngredients ul > li",
+    ".ingredients ul > li",
+    // fallback
+    "ol > li",
+  ];
 
-  if ($(".wprm-recipe-ingredients > .wprm-recipe-ingredient").length) {
-    $(".wprm-recipe-ingredients > .wprm-recipe-ingredient").each((i, el) => {
+  for (let i = 0; i < selectors.length; i++) {
+    if (ingredients.length) break;
+    const selector = selectors[i];
+    $(selector).each((i, el) => {
       ingredients.push($(el).text().replace(/▢/g, ""));
     });
-  } else if ($(".ERSIngredients > ul > li.ingredient").length) {
-    $(".ERSIngredients > ul > li.ingredient").each((i, el) => {
-      ingredients.push($(el).text().replace(/▢/g, ""));
-    });
-  } else {
-    $(".wprm-recipe-ingredient-group > .wprm-recipe-ingredient").each(
-      (i, el) => {
-        ingredients.push($(el).text().replace(/▢/g, ""));
-      }
-    );
   }
+
   if ($(".tasty-recipes-ingredients-detail > ul")) {
     $(".tasty-recipes-ingredients-detail > ul").each((i, el) => {
       // get header
@@ -106,17 +169,35 @@ const getIngredients = ($) => {
 };
 
 const getServings = ($) => {
-  let servings =
-    $(".wprm-recipe-servings").text() || $(".tasty-recipes-yield").text();
+  let servings = 0;
+  const selectors = [
+    ".wprm-recipe-servings",
+    ".tasty-recipes-yield",
+    ".recipe-yield + .recipe-yield-value",
+    ".tasty-recipes-yield",
+    ".mv-create-yield",
+    "[itemprop='recipeYield']",
+  ];
+  selectors.forEach((selector) => {
+    servings = $(selector).text();
+  });
+
   return servings > 0 ? servings : null;
 };
 
 const fallback = (url) => {
   const Recipe = new RecipeSchema();
   return new Promise((resolve, reject) => {
-    request(url, (error, response, html) => {
-      if (!error && response.statusCode === 200) {
-        const $ = cheerio.load(html);
+    axios
+      .get(url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36",
+        },
+      })
+      .then(function (response) {
+        // handle success
+        const $ = cheerio.load(response.data);
 
         Recipe.Image = getImage($);
         Recipe.name = getName($);
@@ -142,11 +223,12 @@ const fallback = (url) => {
         } else {
           resolve(Recipe);
         }
-      } else {
+      })
+      .catch(function (error) {
+        // handle error
         console.log("error loading page...", error);
         reject(new RecipeError("Page did not load"));
-      }
-    });
+      });
   });
 };
 
