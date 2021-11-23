@@ -1,7 +1,9 @@
+require("dotenv").config();
 const fs = require("fs");
 const axios = require("axios");
 const path = require("path");
 const recipeScraper = require("./recipe-scraper/scrapers/");
+const { exit } = require("process");
 
 const inputFilepath = path.join(__dirname, "urls.json");
 const outputFilepath = path.join(
@@ -113,7 +115,7 @@ const getFormSubmittedUrls = () => {
       method: "get",
       url: "https://api.netlify.com/api/v1/forms/617441271a8d270007b8418c/submissions",
       headers: {
-        Authorization: process.env.NETLIFY_API_KEY,
+        Authorization: `Bearer ${process.env.NETLIFY_API_KEY}`,
       },
     };
 

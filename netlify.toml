@@ -1,3 +1,5 @@
 [functions]
   directory = ".netlify/functions"
-
+[dev]
+  framework = "eleventy"
+  command = "npm run dev"
