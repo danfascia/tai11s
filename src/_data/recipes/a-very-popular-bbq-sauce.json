@@ -1,1 +1,30 @@
-{"name":"A Very Popular BBQ Sauce","ingredients":["1 ½ cups brown sugar","1 ½ cups ketchup","½ cup red wine vinegar","½ cup water","1 tablespoon Worcestershire sauce","2 ½ tablespoons dry mustard","2 teaspoons paprika","2 teaspoons salt","1 ½ teaspoons black pepper","2 dashes hot pepper sauce"],"instructions":["In a blender, combine brown sugar, ketchup, vinegar, water and Worcestershire sauce. Season with mustard, paprika, salt, pepper, and hot pepper sauce. Blend until smooth."],"tags":[],"time":{"prep":"10 mins ","cook":"","active":"","inactive":"","ready":"","total":"10 mins "},"servings":"32 ","image":"https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=1500&h=750&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F10%2F28%2FA-Very-Popular-BBQ-Sauce-Jeanette-Bedford-2000.jpg","url":"https://www.allrecipes.com/recipe/51226/a-very-popular-bbq-sauce/"}
+{
+  "name": "A Very Popular BBQ Sauce",
+  "ingredients": [
+    "1 ½ cups brown sugar",
+    "1 ½ cups ketchup",
+    "½ cup red wine vinegar",
+    "½ cup water",
+    "1 tablespoon Worcestershire sauce",
+    "2 ½ tablespoons dry mustard",
+    "2 teaspoons paprika",
+    "2 teaspoons salt",
+    "1 ½ teaspoons black pepper",
+    "2 dashes hot pepper sauce"
+  ],
+  "instructions": [
+    "In a blender, combine brown sugar, ketchup, vinegar, water and Worcestershire sauce. Season with mustard, paprika, salt, pepper, and hot pepper sauce. Blend until smooth."
+  ],
+  "tags": [],
+  "time": {
+    "prep": "10 mins ",
+    "cook": "",
+    "active": "",
+    "inactive": "",
+    "ready": "",
+    "total": "10 mins "
+  },
+  "servings": "32 ",
+  "image": "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=1500&h=750&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F10%2F28%2FA-Very-Popular-BBQ-Sauce-Jeanette-Bedford-2000.jpg",
+  "url": "https://www.allrecipes.com/recipe/51226/a-very-popular-bbq-sauce/"
+}

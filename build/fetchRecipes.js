@@ -40,13 +40,13 @@ async function init() {
       const recipe = await recipeScraper(url);
       recipe.url = url;
       if (recipe) {
-        let slug = recipe.name
+        recipe.slug = recipe.name
           .toLowerCase()
           .replace(/ /g, "-")
           .replace(/[^\w-]+/g, "");
-        slug += ".json";
-        console.log("slug", slug);
-        storeData(recipe, `${cachedFilepath}/${slug}`);
+        recipe.slug += ".json";
+        console.log("slug", recipe.slug);
+        storeData(recipe, `${cachedFilepath}/${recipe.slug}`);
         recipes.push(recipe);
         cachedRecipeUrls.push(recipe.url);
       }

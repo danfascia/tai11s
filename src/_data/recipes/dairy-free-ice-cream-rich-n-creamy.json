@@ -1,1 +1,22 @@
-{"name":"Dairy-Free Ice Cream (Rich ‘n Creamy)","ingredients":["1 can (13.5 oz) whole coconut milk (usually in ethnic aisles of grocery stores)","1 cup original or vanilla almond milk*","1/2 cup agave nectar","1/2 tsp xanthan gum (gluten-free thickener)","1/4 tsp table salt","Optional Add-Ins: 1/2 cup diced strawberries or other fruit, chocolate chips, sprinkles, etc."],"instructions":["In a blender, add all ingredients and blend on high until thick and creamy, 1-2 min. Transfer mixture to an airtight container and chill 2-4 hours.","Place chilled mixture into an ice-cream maker and churn according to manufacturer’s instructions (might only need half the amount of suggested churn time, as it thickens pretty quickly.) If using add-ins, gently add them during last 5 minutes of churning.","May serve immediately for a frozen custard-like texture that’s ultra creamy, smooth, and soft. Otherwise, transfer ice cream to an airtight container and freeze 30-60 minutes for a firmer texture. If frozen much longer, it will need thaw time at room temp before serving (actual thaw time depends on your room temp.)"],"tags":[],"time":{"prep":"","cook":"","total":"15 mins"},"servings":null,"image":"","Image":"https://www.chewoutloud.com/wp-content/uploads/2016/07/Dairy-Free-Ice-Cream-in-a-dish-squre-150x150.jpg","url":"https://www.chewoutloud.com/dairy-free-ice-cream/"}
+{
+  "name": "Dairy-Free Ice Cream (Rich ‘n Creamy)",
+  "ingredients": [
+    "1 can (13.5 oz) whole coconut milk (usually in ethnic aisles of grocery stores)",
+    "1 cup original or vanilla almond milk*",
+    "1/2 cup agave nectar",
+    "1/2 tsp xanthan gum (gluten-free thickener)",
+    "1/4 tsp table salt",
+    "Optional Add-Ins: 1/2 cup diced strawberries or other fruit, chocolate chips, sprinkles, etc."
+  ],
+  "instructions": [
+    "In a blender, add all ingredients and blend on high until thick and creamy, 1-2 min. Transfer mixture to an airtight container and chill 2-4 hours.",
+    "Place chilled mixture into an ice-cream maker and churn according to manufacturer’s instructions (might only need half the amount of suggested churn time, as it thickens pretty quickly.) If using add-ins, gently add them during last 5 minutes of churning.",
+    "May serve immediately for a frozen custard-like texture that’s ultra creamy, smooth, and soft. Otherwise, transfer ice cream to an airtight container and freeze 30-60 minutes for a firmer texture. If frozen much longer, it will need thaw time at room temp before serving (actual thaw time depends on your room temp.)"
+  ],
+  "tags": [],
+  "time": { "prep": "", "cook": "", "total": "15 mins" },
+  "servings": null,
+  "image": "",
+  "Image": "https://www.chewoutloud.com/wp-content/uploads/2016/07/Dairy-Free-Ice-Cream-in-a-dish-squre-150x150.jpg",
+  "url": "https://www.chewoutloud.com/dairy-free-ice-cream/"
+}

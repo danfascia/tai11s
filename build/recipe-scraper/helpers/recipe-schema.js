@@ -9,10 +9,11 @@ function Recipe() {
     active: "",
     inactive: "",
     ready: "",
-    total: ""
+    total: "",
   };
   this.servings = "";
   this.image = "";
+  this.slug = "";
 }
 
 module.exports = Recipe;
