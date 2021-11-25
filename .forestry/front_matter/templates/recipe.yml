@@ -67,6 +67,12 @@ fields:
     required: false
   label: Original Recipe URL
   description: Paste in the source of the URL if it exists
+- name: slug
+  type: text
+  config:
+    required: true
+  label: Slug
+  description: What slug should identify this recipe? Must be unique
 pages:
 - src/_data/recipes/banana-bread.json
 - src/_data/recipes/brownie-pudding.json

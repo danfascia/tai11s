@@ -4,7 +4,7 @@ pagination:
     data: recipes
     size: 1
     alias: recipe
-permalink: "recipes/{{ recipe.name | slug }}/"
+permalink: "recipes/{{ recipe.slug }}/"
 ---
 {% extends "layouts/base.njk" %}
 

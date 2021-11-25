@@ -199,7 +199,7 @@ const fallback = (url) => {
         // handle success
         const $ = cheerio.load(response.data);
 
-        Recipe.Image = getImage($);
+        Recipe.image = getImage($);
         Recipe.name = getName($);
         Recipe.ingredients = getIngredients($);
         Recipe.instructions = getInstructions($);

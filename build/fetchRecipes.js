@@ -28,7 +28,7 @@ const errors = [];
 
 async function init() {
   const cached = getCachedFilenames();
-  const urls = getUrls();
+  const urls = await getUrls();
 
   // loop through the URLs and fetch the content
   for (let i = 0; i < urls.length; i++) {
@@ -44,6 +44,7 @@ async function init() {
           .toLowerCase()
           .replace(/ /g, "-")
           .replace(/[^\w-]+/g, "");
+        recipe.slug = `${i}-${recipe.slug}`;
         recipe.slug += ".json";
         console.log("slug", recipe.slug);
         storeData(recipe, `${cachedFilepath}/${recipe.slug}`);
@@ -80,6 +81,7 @@ const getUrls = async () => {
   const urls = JSON.parse(fs.readFileSync(inputFilepath, { encoding: "utf8" }));
   const formUrls = await getFormSubmittedUrls();
   const allUrls = urls.concat(formUrls);
+  console.log("got urls");
   return [...new Set(allUrls)];
 };
 
