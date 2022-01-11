@@ -45,9 +45,8 @@ async function init() {
           .replace(/ /g, "-")
           .replace(/[^\w-]+/g, "");
         recipe.slug = `${i}-${recipe.slug}`;
-        recipe.slug += ".json";
         console.log("slug", recipe.slug);
-        storeData(recipe, `${cachedFilepath}/${recipe.slug}`);
+        storeData(recipe, `${cachedFilepath}/${recipe.slug}.json`);
         recipes.push(recipe);
         cachedRecipeUrls.push(recipe.url);
       }

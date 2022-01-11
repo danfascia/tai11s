@@ -1,34 +1,25 @@
 {
-  "name": "tai11s",
+  "name": "foodnotfrenzy",
   "version": "1.0.0",
-  "description": "An 11ty starter with TailwindCSS, PostCSS, PurgeCSS and other modern tools",
+  "description": "An app to help you find food",
   "main": "index.js",
   "scripts": {
-    "data": "node build/fetchRecipes.js",
-    "clean": "rm -rf dist",
-    "eleventy:dev": "eleventy --serve 8080 --watch",
-    "eleventy:default": "eleventy",
+    "clean": "rm -rf dist 2> /dev/null",
+    "eleventy:dev": "npx @11ty/eleventy --serve --port=8080 --watch",
+    "eleventy:default": "npx @11ty/eleventy",
     "styles:prod": "postcss src/styles/*.css -o dist/styles/index.css --minify",
     "styles:dev": "postcss src/styles/*.css -o dist/styles/index.css",
     "scripts:prod": "webpack --mode=production",
     "scripts:dev": "webpack --mode=development",
     "serve": "light-server -c .lightserverrc",
-    "dev": "NODE_ENV=development npm-run-all --parallel data clean scripts:dev eleventy:dev styles:dev  --print-label",
+    "dev": "NODE_ENV=development npm-run-all --serial clean scripts:dev styles:dev eleventy:dev   --print-label",
     "dev:debug": "DEBUG=* npm run dev",
     "build": "NODE_ENV=production run-s data clean scripts:prod eleventy:default styles:prod --print-label"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://ianrose@github.com/ianrose/deventy.git"
-  },
-  "author": "",
+  "author": "Matt Bloomfield",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ianrose/deventy/issues"
-  },
-  "homepage": "https://github.com/ianrose/deventy#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "github:11ty/eleventy",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^9.5.1",
@@ -48,6 +39,8 @@
     "acorn": "^6.4.2",
     "axios": "^0.23.0",
     "cheerio": "^1.0.0-rc.3",
+    "firebase": "^9.6.2",
+    "firebase-admin": "^10.0.1",
     "node-fetch": "^3.0.0",
     "parse-domain": "^2.3.2",
     "postcss": "^8.3.11",

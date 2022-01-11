@@ -70,4 +70,5 @@ fields:
 pages:
 - src/_data/recipes/banana-bread.json
 - src/_data/recipes/brownie-pudding.json
+- src/_data/recipes/dads-biscuits.json
 - src/_data/recipes/sweet-potato-souffle.json
