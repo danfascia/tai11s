@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/ianrose/deventy#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.8.3",
+    "@11ty/eleventy": "^1.0.2",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@fullhuman/postcss-purgecss": "^1.2.0",
